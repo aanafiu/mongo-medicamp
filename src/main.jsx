@@ -7,13 +7,14 @@ import { router } from "@/Router/UserRouter";
 
 import "./index.css";
 import { ThemeProvider } from "@/ThemeProvider/ThemeProvider";
+import AuthProvider from "@/User/Provider/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      {/* <AuthProvider> */}
+      <AuthProvider>
         <RouterProvider router={router} />
-      {/* </AuthProvider> */}
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
