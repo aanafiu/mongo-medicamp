@@ -1,31 +1,70 @@
-
+import Loader from "@/User/Common/Loader";
 import app from "@/User/Provider/firebase.config";
 import {
-    createUserWithEmailAndPassword,
-    getAuth,
-
-  } from "firebase/auth";
-import { createContext, useState } from "react";
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
+  // Loader
+  const [loading, setLoading] = useState(true);
 
-    const [userParticipant, setUserParticipant] = useState(null);
+  const [userParticipant, setUserParticipant] = useState(null);
+  // User Loader All Time
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUserParticipant(currentUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // PhonePass Register
+  const registerNewAccount = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+//   Google Login or Signup User
+  const provider = new GoogleAuthProvider();
+  const loginWithGoogle = () => {
+    // console.log("i am here");
+    
+    return signInWithPopup(auth, provider);
+  };
+
+  //   Update Information
+  const updateDetails = (name, image) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: image,
+    })
+  };
 
 
-    // PhonePass Register
-    const registerNewAccount = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
-      };
-    // Pass Information
-    const userInfo = {
-        userParticipant
-    }
-    return (
-        <UserContext.Provider value={userInfo}>{children}</UserContext.Provider>
-    );
+  // Pass Information
+  const userInfo = {
+    userParticipant,
+    updateDetails,
+    registerNewAccount,
+    loginWithGoogle
+  };
+
+  if (loading) {
+    return <Loader></Loader>;
+  }
+
+  return (
+    <UserContext.Provider value={userInfo}>{children}</UserContext.Provider>
+  );
 };
 
 export default AuthProvider;

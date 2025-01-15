@@ -14,7 +14,7 @@ const Nav = () => {
     <div className="w-full flex items-center justify-between my-5">
       {/* Logo */}
       <div>
-        <Link className="text-3xl font-extrabold">MediCamp</Link>
+        <Link to="/" className="text-3xl font-extrabold">MediCamp</Link>
       </div>
 
       {/* Menu */}
@@ -28,7 +28,7 @@ const Nav = () => {
           Home
         </NavLink>
         <NavLink
-          to="test"
+          to="/test"
           className={({ isActive }) =>
             ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
           }
@@ -48,7 +48,7 @@ const Nav = () => {
       {/* Join Us */}
       <div className="flex justify-center items-center gap-5">
         <Card>
-          <Link to="user/login" className="text-nowrap text-lg md:text-xl lg:text-2xl">Join Us</Link>
+          <Link to="/user/login" className="text-nowrap text-lg md:text-xl lg:text-2xl">Join Us</Link>
         </Card>
         <Button variant="destructive" onClick={toggleTheme} className="text-2xl">
           {theme !== "dark" ?<Moon/> : <Sun />}
