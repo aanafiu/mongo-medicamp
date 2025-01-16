@@ -3,9 +3,10 @@ import Swal from "sweetalert2";
 export const notifySuccess = (message) => {
   return Swal.fire({
     icon: "success",
-    title: "Success!",
+    title: "Successfully!",
     text: message,
-    confirmButtonColor: "#4caf50", // Custom color for success
+    confirmButtonColor: "#4caf50",
+    confirmButtonText: "Continue",
   });
 };
 

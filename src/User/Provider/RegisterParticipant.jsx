@@ -62,11 +62,14 @@ const RegisterParticipant = () => {
     formState: { errors },
   } = useForm();
 
+//   Handle register on submit form
   const handleRegister = (e) => {
     e.preventDefault();
     handleSubmit(onSubmit)();
   };
 
+  
+// on Submit set data
   const onSubmit = (data) => {
     console.log("Registration Data:", data);
     const { fullName, photoURL, email, password, role } = data;
