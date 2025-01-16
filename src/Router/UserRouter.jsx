@@ -1,3 +1,5 @@
+import AdminProfile from "@/Admin/AdminProfile";
+import DashBoardAdmin from "@/Admin/DashBoardAdmin";
 import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
 import UserLayout from "@/Layout/UserLayout/UserLayout";
 import Home from "@/User/Common/Home";
@@ -20,10 +22,6 @@ import {
             element:<Home></Home>
         },
         {
-            path:"dashboard",
-            element:<DashBoardUser></DashBoardUser>
-        },
-        {
             path:"test",
             element:<Test></Test>
         },
@@ -44,8 +42,26 @@ import {
             {
                 path:"register",
                 element:<RegisterParticipant/>
-            }
+            },
+            {
+                path:"dashboard",
+                element:<DashBoardUser></DashBoardUser>
+            },
         ]
-    }
+    },
+    {
+        path: "/admin",
+        element: <DashBoardAdmin/>,
+        children:[
+          {
+              path:"profile",
+              element:<AdminProfile></AdminProfile>
+          },
+          {
+              path:"test",
+              element:<Test></Test>
+          },
+        ]
+      },
 
   ]);

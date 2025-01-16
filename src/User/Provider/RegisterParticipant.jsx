@@ -68,7 +68,7 @@ const RegisterParticipant = () => {
     handleSubmit(onSubmit)();
   };
 
-  
+
 // on Submit set data
   const onSubmit = (data) => {
     console.log("Registration Data:", data);
