@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SideMenu = () => {
   return (
     <div className="space-y-5">
-      <div className="py-3 px-6 h-[70px] w-fit rounded-full bg-slate-900 flex items-center justify-center mx-auto">
+      <div className="py-3 px-6 h-[70px] w-fit rounded-full text-white bg-slate-900 flex items-center justify-center mx-auto">
         <h1 className="text-2xl font-bold">DashBoard</h1>
       </div>
       <div className="w-full space-y-3 ">

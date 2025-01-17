@@ -8,6 +8,7 @@ import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
 import UserLayout from "@/Layout/UserLayout/UserLayout";
 import Home from "@/User/Common/Home";
 import DashBoardUser from "@/User/DashBoard/DashBoardUser";
+import UserProfile from "@/User/DashBoard/UserProfile";
 import LoginParticipant from "@/User/Provider/LoginParticiant";
 import RegisterParticipant from "@/User/Provider/RegisterParticipant";
 import Test from "@/User/Test";
@@ -32,7 +33,7 @@ import {
       ]
     },
     {
-        path:"/user/",
+        path:"/user",
         element:<UserAuthLayout/>,
         children:[
             {
@@ -49,14 +50,25 @@ import {
             },
             {
                 path:"dashboard",
-                element:<DashBoardUser></DashBoardUser>
+                element:<DashBoardUser></DashBoardUser>,
+                children:[
+                    {
+                        path:"profile",
+                        element:<UserProfile></UserProfile>
+                    },
+                ]
             },
+          
         ]
     },
     {
-        path: "/admin",
+        path: "/admin/",
         element: <DashBoardAdmin/>,
         children:[
+          {
+              path:"",
+              element:<AdminProfile></AdminProfile>
+          },
           {
               path:"profile",
               element:<AdminProfile></AdminProfile>

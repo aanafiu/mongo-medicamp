@@ -32,7 +32,7 @@ const SingleCamp = () => {
 
     notifyDelete("Do You Want To Delete").then(async (res) => {
       if (res.isConfirmed) {
-        try {
+
           const response = await axios.delete(`http://localhost:5000/delete-camp/${campId}`);
           
           if (response.status === 200) {
@@ -46,9 +46,7 @@ const SingleCamp = () => {
             setLoading(false);
             navigate("/admin/manageallcamps");
           }
-        } catch (error) {
-          console.error("Error deleting camp:", error);
-        }
+
       } else {
         navigate(location.pathname);
       }
@@ -65,7 +63,7 @@ const SingleCamp = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 rounded-lg shadow-md">
       <h2 className="text-3xl font-bold text-center mb-5">{camp.campName}</h2>
-      <img src={camp.image} alt={camp.campName} className="w-full h-64 object-cover rounded-md mb-4" />
+      <img src={camp.image} alt={camp.campName} className="w-full h-64 object-fill rounded-md mb-4" />
       
       <p><strong>Date & Time:</strong> {camp.dateTime}</p>
       <p><strong>Location:</strong> {camp.location}</p>

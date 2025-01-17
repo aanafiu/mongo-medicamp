@@ -3,7 +3,7 @@ import Loader from "@/User/Common/Loader";
 import { UserContext } from "@/User/Provider/AuthProvider";
 import { useContext } from "react";
 
-const AdminProfile = () => {
+const UserProfile = () => {
     const {userParticipant} = useContext(UserContext);
     const email = userParticipant?.email;
     const {userData, loading} = CurrentUserData(email);
@@ -25,4 +25,4 @@ const AdminProfile = () => {
     );
 };
 
-export default AdminProfile;
+export default UserProfile;

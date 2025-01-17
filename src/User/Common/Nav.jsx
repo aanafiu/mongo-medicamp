@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import CurrentUserData from "@/Hooks/CurrentUserData";
 import { useTheme } from "@/ThemeProvider/ThemeProvider";
 import { notifySuccess } from "@/User/Common/Notification";
 import { UserContext } from "@/User/Provider/AuthProvider";
@@ -16,7 +17,10 @@ const Nav = () => {
 
   // User Auth
   const { userParticipant, logOutUser } = useContext(UserContext);
+  // Custom Hook
+  const {userData,loading} = CurrentUserData(userParticipant?.email);
 
+  console.log("sss",userData)
   const [menuVisible, setMenuVisible] = useState(false);
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   const toggleDropMenu = () => {
@@ -62,7 +66,7 @@ const Nav = () => {
           Available Camps
         </NavLink>
         <NavLink
-          to="/dashboard"
+          to={userData?.role === "Participant" ? "/user/dashboard" : "/admin"}
           className={({ isActive }) =>
             ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
           }
@@ -112,7 +116,7 @@ const Nav = () => {
                 <div className="font-semibold">{userParticipant.displayName}</div>
                 <hr className="my-2" />
                 <Link
-                  to="/dashboard"
+                  to={userData?.role === "Participant" ? "/user/dashboard" : "/admin"}
                   className="block py-1 px-2 rounded-md dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   Dashboard
