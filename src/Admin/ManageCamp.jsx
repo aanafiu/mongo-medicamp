@@ -52,7 +52,7 @@ const ManageCamp = () => {
                 <td className="border p-2">{camp.healthcareName}</td>
                 <td className="border p-2 flex gap-2 justify-center">
                   <button
-                    onClick={() => navigate(`/update-camp/${camp._id}`)}
+                    onClick={() => navigate(`/admin/allposts/update-camp/${camp._id}`)}
                     className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600"
                   >
                     Update
