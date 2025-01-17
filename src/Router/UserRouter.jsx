@@ -1,5 +1,9 @@
+import AddNewPost from "@/Admin/AddNewPost";
 import AdminProfile from "@/Admin/AdminProfile";
 import DashBoardAdmin from "@/Admin/DashBoardAdmin";
+import ManageCamp from "@/Admin/ManageCamp";
+import SingleCamp from "@/Admin/SingleCamp";
+import UpdateCamp from "@/Admin/UpdateCamp";
 import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
 import UserLayout from "@/Layout/UserLayout/UserLayout";
 import Home from "@/User/Common/Home";
@@ -56,6 +60,22 @@ import {
           {
               path:"profile",
               element:<AdminProfile></AdminProfile>
+          },
+          {
+              path:"addnewpost",
+              element:<AddNewPost></AddNewPost>
+          },
+          {
+              path:"manageallcamps",
+              element: <ManageCamp></ManageCamp>
+          },
+          {
+              path:"allposts/:id",
+              element: <SingleCamp></SingleCamp>
+          },
+          {
+              path:"allposts/update-camp/:id",
+              element: <UpdateCamp></UpdateCamp>
           },
           {
               path:"test",

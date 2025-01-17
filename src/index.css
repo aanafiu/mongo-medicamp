@@ -20,6 +20,11 @@
   stroke-width: 2px;
 }
 
+.input-field {
+  @apply border text-blue-400 text-lg font-semibold border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+
 
 
 

@@ -13,6 +13,7 @@ const CurrentUserData = (email) => {
       const res = await axios.get(`http://localhost:5000/user-role?email=${email}`);
     //   console.log(res.data)
       setUserData(res.data)
+      setLoading(false)
     };
 
     fetchUserData();
