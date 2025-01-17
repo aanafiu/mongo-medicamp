@@ -1,11 +1,16 @@
+import AllCamps from "@/Hooks/AllCamps";
+import Loader from "@/User/Common/Loader";
+import { notifyDelete, notifySuccess } from "@/User/Common/Notification";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 const SingleCamp = () => {
   const [camp, setCamp] = useState([]);
   const params = useParams();
-  console.log(params.id)
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(params.id)
   useEffect(()=>{
     axios.get(`http://localhost:5000/allposts/${params.id}`)
     .then(res=>{
@@ -13,6 +18,47 @@ const SingleCamp = () => {
       setCamp(res.data)
     })
   },[params])
+
+  const { camps, loading, setLoading } = AllCamps();
+  const [campList, setCampList] = useState([]); // Local state for real-time update
+
+  // Set campList whenever camps change
+  useEffect(() => {
+    setCampList(camps);
+    setLoading(false)
+  }, [camps]);
+  const handleDelete = async (campId) => {
+    console.log(campId);
+
+    notifyDelete("Do You Want To Delete").then(async (res) => {
+      if (res.isConfirmed) {
+        try {
+          const response = await axios.delete(`http://localhost:5000/delete-camp/${campId}`);
+          
+          if (response.status === 200) {
+            notifySuccess("Successfully Removed");
+            
+            setLoading(true);
+            // Remove the deleted camp from the list
+            setCampList(campList.filter(camp => camp._id !== campId));
+            
+            // Optionally trigger a re-fetch
+            setLoading(false);
+            navigate("/admin/manageallcamps");
+          }
+        } catch (error) {
+          console.error("Error deleting camp:", error);
+        }
+      } else {
+        navigate(location.pathname);
+      }
+    });
+  };
+
+  if(loading)
+  {
+    return <Loader></Loader>
+  }
 
   
 
@@ -30,7 +76,7 @@ const SingleCamp = () => {
       
       <div className="flex justify-between mt-4">
         <Link to={`/admin/allposts/update-camp/${camp._id}`} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Update</Link>
-        <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Delete</button>
+        <button onClick={()=>handleDelete(camp._id)} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Delete</button>
       </div>
     </div>
   );

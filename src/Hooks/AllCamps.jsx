@@ -21,7 +21,7 @@ const AllCamps = () => {
     fetchCamps();
   }, []);
 
-  return { camps, loading, error };
+  return { camps, loading, error, setLoading };
 };
 
 export default AllCamps;

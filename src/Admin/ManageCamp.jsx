@@ -1,32 +1,53 @@
 import AllCamps from "@/Hooks/AllCamps";
-import { useEffect, useState } from "react";
+import Loader from "@/User/Common/Loader";
+import { notifyDelete, notifySuccess } from "@/User/Common/Notification";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { HiViewfinderCircle } from "react-icons/hi2";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const ManageCamp = () => {
   const navigate = useNavigate();
-  const { camps, loading, error } = AllCamps();
+  const location = useLocation();
+  const { camps, loading, setLoading } = AllCamps();
+  const [campList, setCampList] = useState([]); // Local state for real-time update
+
+  // Set campList whenever camps change
+  useEffect(() => {
+    setCampList(camps);
+    setLoading(false)
+  }, [camps]);
 
   const handleDelete = async (campId) => {
-    console.log(campId)
-    // const confirmDelete = window.confirm("Are you sure you want to delete this camp?");
-    // if (!confirmDelete) return;
+    console.log(campId);
 
-    // try {
-    //   const response = await fetch(`https://yourapi.com/delete-camp/${campId}`, {
-    //     method: "DELETE",
-    //   });
-
-    //   if (response.ok) {
-    //     setCamps(camps.filter((camp) => camp._id !== campId));
-    //     alert("Camp deleted successfully");
-    //   } else {
-    //     alert("Failed to delete camp");
-    //   }
-    // } catch (error) {
-    //   console.error("Error deleting camp:", error);
-    // }
+    notifyDelete("Do You Want To Delete").then(async (res) => {
+      if (res.isConfirmed) {
+        try {
+          const response = await axios.delete(`http://localhost:5000/delete-camp/${campId}`);
+          
+          if (response.status === 200) {
+            notifySuccess("Successfully Removed");
+            
+            setLoading(true);
+            // Remove the deleted camp from the list
+            setCampList(campList.filter(camp => camp._id !== campId));
+            
+            // Optionally trigger a re-fetch
+            setLoading(false);
+          }
+        } catch (error) {
+          console.error("Error deleting camp:", error);
+        }
+      } else {
+        navigate(location.pathname);
+      }
+    });
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="mx-auto py-5">
@@ -40,16 +61,26 @@ const ManageCamp = () => {
               <th className="border p-2">Date & Time</th>
               <th className="border p-2">Location</th>
               <th className="border p-2">Healthcare Professional</th>
+              <th className="border p-2">Participants</th>
               <th className="border p-2">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {camps.map((camp) => (
+            {campList.map((camp) => (
               <tr key={camp._id} className="border hover:bg-gray-700">
-                <td><Link to={`/admin/allposts/${camp._id}`} className="flex justify-start items-center gap-2"><HiViewfinderCircle className="text-2xl" />{camp.campName}</Link></td>
+                <td>
+                  <Link
+                    to={`/admin/allposts/${camp._id}`}
+                    className="flex justify-start items-center gap-2"
+                  >
+                    <HiViewfinderCircle className="text-2xl" />
+                    {camp.campName}
+                  </Link>
+                </td>
                 <td className="border p-2">{camp.dateTime}</td>
                 <td className="border p-2">{camp.location}</td>
                 <td className="border p-2">{camp.healthcareName}</td>
+                <td className="border p-2 text-center">{camp.participantCount}</td>
                 <td className="border p-2 flex gap-2 justify-center">
                   <button
                     onClick={() => navigate(`/admin/allposts/update-camp/${camp._id}`)}

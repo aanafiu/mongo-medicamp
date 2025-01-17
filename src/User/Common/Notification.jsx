@@ -38,3 +38,14 @@ export const notifyWarning = (message) => {
     confirmButtonColor: "#ffc107", // Custom color for warning
   });
 };
+
+export const notifyDelete = (message)=>{
+  return Swal.fire({
+    title: message,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  })
+}
