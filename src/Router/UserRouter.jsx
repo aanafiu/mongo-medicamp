@@ -6,6 +6,7 @@ import SingleCamp from "@/Admin/SingleCamp";
 import UpdateCamp from "@/Admin/UpdateCamp";
 import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
 import UserLayout from "@/Layout/UserLayout/UserLayout";
+import AllCampsDetails from "@/User/Common/AllCampsDetails";
 import Home from "@/User/Common/Home";
 import DashBoardUser from "@/User/DashBoard/DashBoardUser";
 import UserProfile from "@/User/DashBoard/UserProfile";
@@ -25,6 +26,10 @@ import {
         {
             path:"/",
             element:<Home></Home>
+        },
+        {
+            path:"allcamps",
+            element:<AllCampsDetails></AllCampsDetails>
         },
         {
             path:"test",

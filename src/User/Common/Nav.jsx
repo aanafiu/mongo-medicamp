@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import CurrentUserData from "@/Hooks/CurrentUserData";
 import { useTheme } from "@/ThemeProvider/ThemeProvider";
+import Loader from "@/User/Common/Loader";
 import { notifySuccess } from "@/User/Common/Notification";
 import { UserContext } from "@/User/Provider/AuthProvider";
 import { Moon, Sun } from "lucide-react";
@@ -38,6 +39,11 @@ const Nav = () => {
     });
   };
 
+  if(loading)
+  {
+    return <Loader></Loader>
+  }
+
   return (
     <div className="w-full flex items-center justify-between my-5">
       {/* Logo */}
@@ -58,7 +64,7 @@ const Nav = () => {
           Home
         </NavLink>
         <NavLink
-          to="/test"
+          to="/allcamps"
           className={({ isActive }) =>
             ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
           }
