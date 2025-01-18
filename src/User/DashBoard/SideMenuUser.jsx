@@ -13,7 +13,7 @@ const SideMenuUser = () => {
           <Link to={"/user/addnewpost"}>Add New Camp</Link>
         </Button>
         <Button className="w-[70%] text-lg font-bold text-gray-400">
-          <Link to={"/user/manageallcamps"}>Manage All Camps</Link>
+          <Link to={"manage-camps"}>Manage All Camps</Link>
         </Button>
         <Button className="w-[70%] text-lg font-bold text-gray-400">
           <Link to={"/user/manageallcamps"}>Manage All Camps</Link>

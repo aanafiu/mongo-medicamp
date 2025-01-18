@@ -8,8 +8,10 @@ import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
 import UserLayout from "@/Layout/UserLayout/UserLayout";
 import AllCampsDetails from "@/User/Common/AllCampsDetails";
 import Home from "@/User/Common/Home";
+import SingleCampUser from "@/User/Common/SingleCampUser";
 import DashBoardUser from "@/User/DashBoard/DashBoardUser";
 import UserProfile from "@/User/DashBoard/UserProfile";
+import UserRegisteredCamp from "@/User/DashBoard/UserRegisteredCamp";
 import LoginParticipant from "@/User/Provider/LoginParticiant";
 import RegisterParticipant from "@/User/Provider/RegisterParticipant";
 import Test from "@/User/Test";
@@ -54,12 +56,20 @@ import {
                 element:<RegisterParticipant/>
             },
             {
+                path:"allcamps/:id",
+                element:<SingleCampUser/>
+            },
+            {
                 path:"dashboard",
                 element:<DashBoardUser></DashBoardUser>,
                 children:[
                     {
                         path:"profile",
                         element:<UserProfile></UserProfile>
+                    },
+                    {
+                        path:"manage-camps",
+                        element:<UserRegisteredCamp></UserRegisteredCamp>
                     },
                 ]
             },

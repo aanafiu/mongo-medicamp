@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import CurrentUserData from "@/Hooks/CurrentUserData";
 import { useTheme } from "@/ThemeProvider/ThemeProvider";
-import Loader from "@/User/Common/Loader";
 import { notifySuccess } from "@/User/Common/Notification";
 import { UserContext } from "@/User/Provider/AuthProvider";
 import { Moon, Sun } from "lucide-react";
@@ -19,7 +18,7 @@ const Nav = () => {
   // User Auth
   const { userParticipant, logOutUser } = useContext(UserContext);
   // Custom Hook
-  const {userData,loading} = CurrentUserData(userParticipant?.email);
+  const {userData} = CurrentUserData(userParticipant?.email);
 
   console.log("sss",userData)
   const [menuVisible, setMenuVisible] = useState(false);
@@ -39,10 +38,10 @@ const Nav = () => {
     });
   };
 
-  if(loading)
-  {
-    return <Loader></Loader>
-  }
+  // if(loading)
+  // {
+  //   return <Loader></Loader>
+  // }
 
   return (
     <div className="w-full flex items-center justify-between my-5">
@@ -118,7 +117,7 @@ const Nav = () => {
 
             {/* Custom Menu */}
             {menuVisible && (
-              <div className="absolute top-[100%] right-0 mt-2 w-48 shadow-md dark:shadow-white rounded-md p-2 space-y-4">
+              <div className="absolute z-30 top-[100%] right-0 mt-2 w-48 shadow-md bg-black/70 dark:shadow-white rounded-md p-2 space-y-4">
                 <div className="font-semibold">{userParticipant.displayName}</div>
                 <hr className="my-2" />
                 <Link
