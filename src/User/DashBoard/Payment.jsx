@@ -59,11 +59,11 @@ const CheckoutForm = ({camp}) => {
         
         if(res.isConfirmed)
         {
-            axios.put(`http://localhost:5000/register-camp-by-user/${campDetails._id}`)
+            axios.put(`https://backend-medicamp-a12.vercel.app/register-camp-by-user/${campDetails._id}`)
             .then(res=>{
                 if(res.status===201)
                     {
-                    axios.post("http://localhost:5000/sucessfully-payment",userInfo)
+                    axios.post("https://backend-medicamp-a12.vercel.app/sucessfully-payment",userInfo)
                     .then(res=>{
                         if(res.status === 201)
                         {
@@ -105,7 +105,7 @@ const Payment = () => {
     const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    axios.post("http://localhost:5000/create-payment-intent", { amount: camp?.fees, currency: "usd" })
+    axios.post("https://backend-medicamp-a12.vercel.app/create-payment-intent", { amount: camp?.fees, currency: "usd" })
       .then(res => setClientSecret(res.data.clientSecret))
       .catch(err => console.error("Error fetching clientSecret:", err));
   }, [camp?.fees]);

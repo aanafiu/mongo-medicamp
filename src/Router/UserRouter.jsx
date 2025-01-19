@@ -6,6 +6,7 @@ import SingleCamp from "@/Admin/SingleCamp";
 import UpdateCamp from "@/Admin/UpdateCamp";
 import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
 import UserLayout from "@/Layout/UserLayout/UserLayout";
+import PrivateRoutes from "@/Router/PrivateRoutes";
 import AllCampsDetails from "@/User/Common/AllCampsDetails";
 import Home from "@/User/Common/Home";
 import SingleCampUser from "@/User/Common/SingleCampUser";
@@ -47,7 +48,25 @@ import {
         children:[
             {
                 path:"",
-                element:<LoginParticipant></LoginParticipant>
+                element:<PrivateRoutes allowedRoles={["Participant"]}><DashBoardUser></DashBoardUser></PrivateRoutes>,
+                children:[
+                    {
+                        path:"profile",
+                        element:<UserProfile></UserProfile>
+                    },
+                    {
+                        path:"manage-camps",
+                        element:<UserRegisteredCamp></UserRegisteredCamp>
+                    },
+                    {
+                        path:"managemycamps",
+                        element:<ManageMyRegistrations></ManageMyRegistrations>
+                    },
+                    {
+                        path:"payment/:campId",
+                        element:<Payment/>
+                    },
+                ]
             },
             {
                 path:"login",
@@ -63,7 +82,7 @@ import {
             },
             {
                 path:"dashboard",
-                element:<DashBoardUser></DashBoardUser>,
+                element:<PrivateRoutes allowedRoles={["Participant"]}><DashBoardUser></DashBoardUser></PrivateRoutes>,
                 children:[
                     {
                         path:"profile",
@@ -74,7 +93,7 @@ import {
                         element:<UserRegisteredCamp></UserRegisteredCamp>
                     },
                     {
-                        path:"manage-my-camps",
+                        path:"managemycamps",
                         element:<ManageMyRegistrations></ManageMyRegistrations>
                     },
                     {
@@ -88,7 +107,7 @@ import {
     },
     {
         path: "/admin/",
-        element: <DashBoardAdmin/>,
+        element: <PrivateRoutes allowedRoles={["Organizer"]}><DashBoardAdmin/></PrivateRoutes>,
         children:[
           {
               path:"",

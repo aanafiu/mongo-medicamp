@@ -20,7 +20,7 @@ const UpdateCamp = () => {
   // Fetch existing camp details
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allposts/${id}`)
+      .get(`https://backend-medicamp-a12.vercel.app/allposts/${id}`)
       .then((res) => {
         setCamp(res.data);
 
@@ -33,7 +33,7 @@ const UpdateCamp = () => {
   // Handle form submission
   const onSubmit = (updatedData) => {
     axios
-      .put(`http://localhost:5000/update-camp/${id}`, updatedData)
+      .put(`https://backend-medicamp-a12.vercel.app/update-camp/${id}`, updatedData)
       .then((res) => {
         console.log("Update Successful:", res);
         if (res.status === 200) {

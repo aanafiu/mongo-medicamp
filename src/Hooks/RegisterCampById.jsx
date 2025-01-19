@@ -10,7 +10,7 @@ const RegisterCampById = (campId) => {
 
     const fetchCamp = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/register-camp-by-user/${campId}`);
+        const response = await fetch(`https://backend-medicamp-a12.vercel.app/register-camp-by-user/${campId}`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch camp");

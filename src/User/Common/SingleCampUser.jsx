@@ -81,7 +81,7 @@ const SingleCampUser = () => {
       // Send data to database
 
          axios.post(
-          "http://localhost:5000/register-camp-by-user",
+          "https://backend-medicamp-a12.vercel.app/register-camp-by-user",
           formValues
         ).then(res=>{
             if(res.status===201)

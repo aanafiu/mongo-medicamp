@@ -20,7 +20,7 @@ const UserRegisteredCamps = () => {
   const fetchRegisteredCamps = () => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/register-camp-by-user?email=${userParticipant?.email}`)
+      .get(`https://backend-medicamp-a12.vercel.app/register-camp-by-user?email=${userParticipant?.email}`)
       .then((res) => {
         setCamps(res.data.data);
         setLoading(false);
@@ -59,7 +59,7 @@ const UserRegisteredCamps = () => {
       if (result.isConfirmed) {
         try {
           const response = await axios.put(
-            `http://localhost:5000/cancel-registration/${id}`
+            `https://backend-medicamp-a12.vercel.app/cancel-registration/${id}`
           );
 
           if (response.data.success) {
@@ -95,7 +95,7 @@ const UserRegisteredCamps = () => {
       const feedback = text;
       console.log(text);
       axios
-        .put(`http://localhost:5000/update-feedback/${id}`, { feedback })
+        .put(`https://backend-medicamp-a12.vercel.app/update-feedback/${id}`, { feedback })
         .then((response) => {
             setLoading(true)
           if (response.data.success) {

@@ -10,7 +10,7 @@ const CurrentUserData = (email) => {
 
     const fetchUserData = async () => {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5000/user-role?email=${email}`);
+      const res = await axios.get(`https://backend-medicamp-a12.vercel.app/user-role?email=${email}`);
     //   console.log(res.data)
       setUserData(res.data)
       setLoading(false)

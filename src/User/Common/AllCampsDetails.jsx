@@ -71,11 +71,11 @@ const AllCampsDetails = () => {
                     <div key={camp._id} className="border flex flex-col justify-between items-center p-4 rounded backdrop-blur-md shadow-md">
                         <img src={camp.image} alt={camp.campName} className="w-full h-[250px] object-fill rounded" />
                         <h2 className="text-2xl font-bold mt-2">{camp.campName}</h2>
-                        <p className="text-gray-600"><strong className='font-semibold text-white'>Date & Time:</strong> {camp.dateTime}</p>
-                        <p className="text-gray-600"><strong className='font-semibold text-white'>Location:</strong> {camp.location}</p>
-                        <p className="text-gray-600"><strong className='font-semibold text-white'>Healthcare Professional:</strong> {camp.healthcareName}</p>
-                        <p className="text-gray-600"><strong className='font-semibold text-white'>Participants:</strong> {camp.participantCount}</p>
-                        <p className="text-gray-600"><strong className='font-semibold text-white'>Fees:</strong> ${camp.fees}</p>
+                        <p className="text-gray-600"><strong className='font-semibold dark:text-white'>Date & Time:</strong> {camp.dateTime}</p>
+                        <p className="text-gray-600"><strong className='font-semibold dark:text-white'>Location:</strong> {camp.location}</p>
+                        <p className="text-gray-600"><strong className='font-semibold dark:text-white'>Healthcare Professional:</strong> {camp.healthcareName}</p>
+                        <p className="text-gray-600"><strong className='font-semibold dark:text-white'>Participants:</strong> {camp.participantCount}</p>
+                        <p className="text-gray-600"><strong className='font-semibold dark:text-white'>Fees:</strong> ${camp.fees}</p>
                         <p className="text-gray-700 mt-2">{camp.description.slice(0, 100)}...</p>
                         <Link
                             to={`/user/allcamps/${camp._id}`}

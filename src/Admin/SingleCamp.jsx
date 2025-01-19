@@ -12,7 +12,7 @@ const SingleCamp = () => {
   const location = useLocation();
   // console.log(params.id)
   useEffect(()=>{
-    axios.get(`http://localhost:5000/allposts/${params.id}`)
+    axios.get(`https://backend-medicamp-a12.vercel.app/allposts/${params.id}`)
     .then(res=>{
       console.log(res.data)
       setCamp(res.data)
@@ -33,7 +33,7 @@ const SingleCamp = () => {
     notifyDelete("Do You Want To Delete").then(async (res) => {
       if (res.isConfirmed) {
 
-          const response = await axios.delete(`http://localhost:5000/delete-camp/${campId}`);
+          const response = await axios.delete(`https://backend-medicamp-a12.vercel.app/delete-camp/${campId}`);
           
           if (response.status === 200) {
             notifySuccess("Successfully Removed");

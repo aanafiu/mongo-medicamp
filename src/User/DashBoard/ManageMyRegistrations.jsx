@@ -8,13 +8,15 @@ const ManageMyRegistrations = () => {
 
     useEffect(() => {
         if (userParticipant?.email) {
-            axios.get(`http://localhost:5000/sucessfully-payment?email=${userParticipant.email}`)
+            axios.get(`https://backend-medicamp-a12.vercel.app/sucessfully-payment?email=${userParticipant.email}`)
                 .then(res => {
                     setCamps(res.data.data);
                 })
                 .catch(error => console.error("Error fetching registrations:", error));
         }
     }, [userParticipant]);
+
+    console.log(camps)
 
     return (
         <div className="container mx-auto px-4 py-6">

@@ -14,7 +14,7 @@ const AddNewPost = () => {
   const onSubmit = (data) => {
     data.fees = parseFloat(data.fees);
     console.log(data);
-    axios.post("http://localhost:5000/allpost",data)
+    axios.post("https://backend-medicamp-a12.vercel.app/allpost",data)
     .then(res=>{
         console.log(res.status)
         if(res.status === 201)
