@@ -53,16 +53,17 @@ const CheckoutForm = ({camp}) => {
             registrationCampName: campDetails.campName,
             participantName: campDetails.participantName,
             participantEmail: campDetails.participantEmail,
+            paymentStatus:"paid",
             campData: camp,
         }
         
         if(res.isConfirmed)
         {
-            axios.post("http://localhost:5000/sucessfully-payment",userInfo)
+            axios.put(`http://localhost:5000/register-camp-by-user/${campDetails._id}`)
             .then(res=>{
                 if(res.status===201)
-                {
-                    axios.put(`http://localhost:5000/register-camp-by-user/${campDetails._id}`)
+                    {
+                    axios.post("http://localhost:5000/sucessfully-payment",userInfo)
                     .then(res=>{
                         if(res.status === 201)
                         {

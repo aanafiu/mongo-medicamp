@@ -16,7 +16,7 @@ const SideMenuUser = () => {
           <Link to={"manage-camps"}>Registered Camps</Link>
         </Button>
         <Button className="w-[70%] text-lg font-bold text-gray-400">
-          <Link to={"/user/manageallcamps"}>Manage My Camps</Link>
+          <Link to={"manage-my-camps"}>Manage My Camps</Link>
         </Button>
       </div>
 

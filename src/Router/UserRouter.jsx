@@ -10,6 +10,7 @@ import AllCampsDetails from "@/User/Common/AllCampsDetails";
 import Home from "@/User/Common/Home";
 import SingleCampUser from "@/User/Common/SingleCampUser";
 import DashBoardUser from "@/User/DashBoard/DashBoardUser";
+import ManageMyRegistrations from "@/User/DashBoard/ManageMyRegistrations";
 import Payment from "@/User/DashBoard/Payment";
 import UserProfile from "@/User/DashBoard/UserProfile";
 import UserRegisteredCamp from "@/User/DashBoard/UserRegisteredCamp";
@@ -71,6 +72,10 @@ import {
                     {
                         path:"manage-camps",
                         element:<UserRegisteredCamp></UserRegisteredCamp>
+                    },
+                    {
+                        path:"manage-my-camps",
+                        element:<ManageMyRegistrations></ManageMyRegistrations>
                     },
                     {
                         path:"payment/:campId",
