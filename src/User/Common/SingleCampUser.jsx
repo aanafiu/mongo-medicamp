@@ -103,12 +103,12 @@ const SingleCampUser = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className=" shadow-lg rounded-lg p-6 max-w-4xl mx-auto">
+      <div className=" shadow-lg rounded-lg p-6 max-w-5xl mx-auto">
         {/* Camp Image */}
         <img
           src={post?.image}
           alt={post?.campName}
-          className="w-full h-full object-cover rounded-md"
+          className="w-full h-[500px] object-fill rounded-md"
         />
 
         {/* Camp Details */}

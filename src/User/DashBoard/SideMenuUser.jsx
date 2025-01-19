@@ -7,16 +7,16 @@ const SideMenuUser = () => {
   return (
       <div className="p-2 grid md:grid-cols-2 lg:grid-cols-4 gap-2 justify-items-center ">
         <Button className="w-[70%] text-lg font-bold text-gray-400">
+          <Link to={"/user/addnewpost"}>Analysis</Link>
+        </Button>
+        <Button className="w-[70%] text-lg font-bold text-gray-400">
           <Link to={"profile"}>My Profile</Link>
         </Button>
         <Button className="w-[70%] text-lg font-bold text-gray-400">
-          <Link to={"/user/addnewpost"}>Add New Camp</Link>
+          <Link to={"manage-camps"}>Registered Camps</Link>
         </Button>
         <Button className="w-[70%] text-lg font-bold text-gray-400">
-          <Link to={"manage-camps"}>Manage All Camps</Link>
-        </Button>
-        <Button className="w-[70%] text-lg font-bold text-gray-400">
-          <Link to={"/user/manageallcamps"}>Manage All Camps</Link>
+          <Link to={"/user/manageallcamps"}>Manage My Camps</Link>
         </Button>
       </div>
 
