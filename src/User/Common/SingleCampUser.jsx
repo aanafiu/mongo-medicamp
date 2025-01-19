@@ -90,7 +90,13 @@ const SingleCampUser = () => {
                 .then((res)=>{
                     if(res.isConfirmed)
                     {
-                        navigate("/user/dashboard/manage-camps")
+                        axios.put(`http://localhost:5000/participantCount/${id}`).then((res)=>{
+                            if(res.status=== 200)
+                            {
+
+                                navigate("/user/dashboard/manage-camps")
+                            }
+                        })
                     }
                 })
             }
