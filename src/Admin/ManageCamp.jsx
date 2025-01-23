@@ -24,7 +24,7 @@ const ManageCamp = () => {
     notifyDelete("Do You Want To Delete").then(async (res) => {
       if (res.isConfirmed) {
         try {
-          const response = await axios.delete(`https://backend-medicamp-a12.vercel.app/delete-camp/${campId}`);
+          const response = await axios.delete(`http://localhost:5000/delete-camp/${campId}`);
           
           if (response.status === 200) {
             notifySuccess("Successfully Removed");

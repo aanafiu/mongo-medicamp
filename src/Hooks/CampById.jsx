@@ -12,7 +12,7 @@ const CampById = (id) => {
         const fetchPost = async () => {
             setLoading(true);
             try {
-                const { data } = await axios.get(`https://backend-medicamp-a12.vercel.app/allposts/${id}`);
+                const { data } = await axios.get(`http://localhost:5000/allposts/${id}`);
                 setPost(data);
             } catch (err) {
                 setError(err.response?.data?.message || "Failed to fetch post data");

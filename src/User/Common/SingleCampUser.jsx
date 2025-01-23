@@ -1,18 +1,21 @@
 import CampById from "@/Hooks/CampById";
 import Loader from "@/User/Common/Loader";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "@/User/Provider/AuthProvider";
 import { notifySuccess } from "@/User/Common/Notification";
+import CurrentUserData from "@/Hooks/CurrentUserData";
+import { Button } from "@/components/ui/button";
 
 const SingleCampUser = () => {
-    const navigate = useNavigate();
-  const { id } = useParams(); 
+  const navigate = useNavigate();
+  const { id } = useParams();
   const { post, loading } = CampById(id);
 
-  const {userParticipant} = useContext(UserContext)
+  const { userParticipant } = useContext(UserContext);
+  const { userData } = CurrentUserData(userParticipant?.email);
 
   if (loading) {
     return <Loader />;
@@ -48,12 +51,15 @@ const SingleCampUser = () => {
         const age = document.getElementById("age").value;
         const phone = document.getElementById("phone").value;
         const gender = document.getElementById("gender").value;
-        const emergencyContact = document.getElementById("emergencyContact").value;
+        const emergencyContact =
+          document.getElementById("emergencyContact").value;
 
         // Validate that all fields are filled
         if (!age || !phone || !gender || !emergencyContact) {
-            Swal.showValidationMessage("All fields are required! Please fill in all details.");
-            return false;
+          Swal.showValidationMessage(
+            "All fields are required! Please fill in all details."
+          );
+          return false;
         }
         return {
           campId: id,
@@ -67,12 +73,10 @@ const SingleCampUser = () => {
           phone,
           gender,
           emergencyContact,
-          paymentStatusParticipant:"unpaid",
+          paymentStatusParticipant: "unpaid",
           confrimationStatusByOrganizer: "pending",
-          cancelByParticipant:false,
-          feedback:"",
-
-
+          cancelByParticipant: false,
+          feedback: "",
         };
       },
     });
@@ -80,36 +84,34 @@ const SingleCampUser = () => {
     if (formValues) {
       // Send data to database
 
-         axios.post(
-          "https://backend-medicamp-a12.vercel.app/register-camp-by-user",
+      axios
+        .post(
+          "http://localhost:5000/register-camp-by-user",
           formValues
-        ).then(res=>{
-            if(res.status===201)
-            {
-                notifySuccess("Registation Complete")
-                .then((res)=>{
-                    if(res.isConfirmed)
-                    {
-                        axios.put(`http://localhost:5000/participantCount/${id}`).then((res)=>{
-                            if(res.status=== 200)
-                            {
-
-                                navigate("/user/dashboard/manage-camps")
-                            }
-                        })
+        )
+        .then((res) => {
+          if (res.status === 201) {
+            notifySuccess("Registation Complete").then((res) => {
+              if (res.isConfirmed) {
+                axios
+                  .put(
+                    `http://localhost:5000/participantCount/${id}`
+                  )
+                  .then((res) => {
+                    if (res.status === 200) {
+                      navigate("/user/dashboard/manage-camps");
                     }
-                })
-            }
-
-        })
-        
-
+                  });
+              }
+            });
+          }
+        });
     }
   };
 
   return (
     <div className="container mx-auto p-6">
-      <div className=" shadow-lg rounded-lg p-6 max-w-5xl mx-auto">
+      <div className=" shadow-lg rounded-lg p-6 container h-fit space-y-7 mx-auto">
         {/* Camp Image */}
         <img
           src={post?.image}
@@ -140,12 +142,18 @@ const SingleCampUser = () => {
         </div>
 
         {/* Join Camp Button */}
-        <button
-          onClick={handleJoinCamp}
-          className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
-        >
-          Join Camp
-        </button>
+        {userData?.role === "Organizer" ? (
+          <div>
+              <Link to={`/admin/allposts/${id}`} className=" bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">Manage Camp</Link>
+          </div>
+        ) : (
+          <button
+            onClick={handleJoinCamp}
+            className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
+          >
+            Join Camp
+          </button>
+        )}
       </div>
     </div>
   );

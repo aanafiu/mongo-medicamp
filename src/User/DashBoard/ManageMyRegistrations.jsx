@@ -8,7 +8,7 @@ const ManageMyRegistrations = () => {
 
     useEffect(() => {
         if (userParticipant?.email) {
-            axios.get(`https://backend-medicamp-a12.vercel.app/sucessfully-payment?email=${userParticipant.email}`)
+            axios.get(`http://localhost:5000/sucessfully-payment?email=${userParticipant.email}`)
                 .then(res => {
                     setCamps(res.data.data);
                 })

@@ -6,7 +6,7 @@ const UserAuthLayout = () => {
     return (
         <div className="container mx-auto my-5">
         <Nav></Nav>
-        <div className="min-h-screen">
+        <div className="h-full">
         <Outlet></Outlet>
         </div>
         <FooterSection></FooterSection>

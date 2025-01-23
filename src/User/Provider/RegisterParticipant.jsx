@@ -31,7 +31,7 @@ const RegisterParticipant = () => {
   //   Send Data To Axios
   const sendDataToAxios = (fullName, email, photoURL, role) => {
     axios
-      .post("https://backend-medicamp-a12.vercel.app/userinformations", {
+      .post("http://localhost:5000/userinformations", {
         name: fullName,
         email: email,
         photoURL: photoURL,
