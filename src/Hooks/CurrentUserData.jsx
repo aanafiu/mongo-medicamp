@@ -1,25 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 const CurrentUserData = (email) => {
-    console.log(email)
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const [refetchFlag, setRefetchFlag] = useState(0); // State to trigger refetch
+
+  const fetchUserData = useCallback(async () => {
     if (!email) return;
 
-    const fetchUserData = async () => {
-      setLoading(true);
-      const res = await axios.get(`http://localhost:5000/user-role?email=${email}`);
-    //   console.log(res.data)
-      setUserData(res.data)
-      setLoading(false)
-    };
-
-    fetchUserData();
+    setLoading(true);
+    const res = await axios.get(`http://localhost:5000/user-role?email=${email}`);
+    setUserData(res.data);
+    setLoading(false);
   }, [email]);
-//   console.log("sss" , userData)
-  return { userData, loading };
+
+  // Fetch user data on mount & when refetchFlag changes
+  useEffect(() => {
+    fetchUserData();
+  }, [fetchUserData, refetchFlag]);
+
+  // Function to trigger refetch
+  const refetch = () => {
+    setRefetchFlag((prev) => prev + 1);
+  };
+
+  return { userData, loading, refetch };
 };
 
 export default CurrentUserData;

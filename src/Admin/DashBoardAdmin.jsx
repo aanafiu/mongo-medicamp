@@ -8,7 +8,7 @@ const DashBoardAdmin = () => {
       <div className="p-4 w-fit md:w-[25%]  min-h-screen bg-slate-400 flex flex-col justify-start relative">
         <SideMenu></SideMenu>
       </div>
-      <div className="p-4 w-[80%] min-h-screen bg-slate-600 overflow-x-scroll">
+      <div className="p-4 w-[80%] min-h-screen bg-slate-600 overflow-scroll">
         <Outlet></Outlet>
       </div>
     </div>
