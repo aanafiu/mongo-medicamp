@@ -16,7 +16,7 @@ const ManageMyRegistrations = () => {
         }
     }, [userParticipant]);
 
-    console.log(camps)
+    console.log(camps);
 
     return (
         <div className="container mx-auto px-4 py-6">
@@ -28,10 +28,11 @@ const ManageMyRegistrations = () => {
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse border text-white bg-gray-950 border-gray-300">
                         <thead>
-                            <tr className="  uppercase text-sm">
+                            <tr className="uppercase text-sm">
                                 <th className="border p-3">Camp Name</th>
                                 <th className="border p-3">Fees</th>
                                 <th className="border p-3">Location</th>
+                                <th className="border p-3">Transaction ID</th> {/* Added Column */}
                                 <th className="border p-3">Payment Status</th>
                             </tr>
                         </thead>
@@ -40,10 +41,11 @@ const ManageMyRegistrations = () => {
                                 <tr key={index} className="text-center bg-gray-700">
                                     <td className="border p-3">{camp.registrationCampName}</td>
                                     <td className="border p-3">${camp.registrationFees}</td>
-                                    <td className="border p-3">{camp.campData.location}</td>
+                                    <td className="border p-3">{camp.campData?.location || "N/A"}</td>
+                                    <td className="border p-3">{camp.transactionId || "N/A"}</td> {/* Transaction ID */}
                                     <td
                                         className={`border p-3 font-semibold ${
-                                            camp.campData.paymentStatus === "unpaid"
+                                            camp.paymentStatus === "unpaid"
                                                 ? "text-red-500"
                                                 : "text-green-500"
                                         }`}

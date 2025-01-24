@@ -2,6 +2,7 @@ import AddNewPost from "@/Admin/AddNewPost";
 import AdminProfile from "@/Admin/AdminProfile";
 import DashBoardAdmin from "@/Admin/DashBoardAdmin";
 import ManageCamp from "@/Admin/ManageCamp";
+import ManageRegistrationCamps from "@/Admin/ManageRegistrationCamps";
 import SingleCamp from "@/Admin/SingleCamp";
 import UpdateCamp from "@/Admin/UpdateCamp";
 import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
@@ -132,6 +133,10 @@ import {
           {
               path:"allposts/update-camp/:id",
               element: <UpdateCamp></UpdateCamp>
+          },
+          {
+              path:"manageregistrationcamps",
+              element:<ManageRegistrationCamps></ManageRegistrationCamps>
           },
           {
               path:"test",

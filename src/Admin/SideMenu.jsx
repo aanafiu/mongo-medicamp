@@ -45,7 +45,7 @@ const SideMenu = () => {
           <Link to={"/admin/manageallcamps"}>Manage All Camps</Link>
         </Button>
         <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
-          <Link to={"/admin/manageallcamps"}>Manage Registered Camps</Link>
+          <Link to={"/admin/manageregistrationcamps"}>Manage Registered Camps</Link>
         </Button>
         <div className="absolute w-full flex gap-2 justify-center items-center bottom-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
         <Button className="w-fit text-lg font-bold text-gray-400">
