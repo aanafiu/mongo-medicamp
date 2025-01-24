@@ -4,6 +4,7 @@ import Loader from "@/User/Common/Loader";
 import { UserContext } from "@/User/Provider/AuthProvider";
 import axios from "axios";
 import { notifySuccess, notifyError } from "@/User/Common/Notification";
+import { Button } from "@/components/ui/button";
 
 const UserProfile = () => {
     const { userParticipant } = useContext(UserContext);
@@ -77,12 +78,12 @@ const UserProfile = () => {
                     {image && <img src={image} alt="New Upload" className="w-24 h-24 mt-2 rounded-full" />}
                 </div>
                 
-                <button 
+                <Button 
                     onClick={handleUpdate} 
                     className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
                     Update
-                </button>
+                </Button>
             </div>
         </div>
     );

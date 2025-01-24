@@ -9,61 +9,72 @@ import { useTheme } from "@/ThemeProvider/ThemeProvider";
 import { Moon, Sun } from "lucide-react";
 
 const SideMenu = () => {
-  const {logOutUser} = useContext(UserContext);
+  const { logOutUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const handleLogout = ()=>{
-    logOutUser()
-    .then((res)=>{
-      notifySuccess("LogOut")
-      .then(res=>{
-        if(res.isConfirmed)
-        {
+
+  const handleLogout = () => {
+    logOutUser().then(() => {
+      notifySuccess("LogOut").then((res) => {
+        if (res.isConfirmed) {
           navigate("/user/login");
         }
-      })
-    })
-  }
+      });
+    });
+  };
 
-    // Theme Control
-    const { theme, setTheme } = useTheme();
-    const toggleTheme = () => {
-      setTheme(theme === "dark" ? "light" : "dark");
-    };
+  // Theme Control
+  const { theme, setTheme } = useTheme();
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <div className="space-y-6">
       <div className="py-3 px-6 h-[70px] w-fit rounded-full text-white bg-slate-900 flex items-center justify-center mx-auto">
         <h1 className="text-lg md:text-xl lg:text-2xl font-bold">DashBoard</h1>
       </div>
-      <div className="w-full space-y-5 ">
-        <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
-          <Link to={"/admin/profile"}>My Profile</Link>
-        </Button>
-        <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
-          <Link to={"/admin/addnewpost"}>Add New Camp</Link>
-        </Button>
-        <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
-          <Link to={"/admin/manageallcamps"}>Manage All Camps</Link>
-        </Button>
-        <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
-          <Link to={"/admin/manageregistrationcamps"}>Manage Registered Camps</Link>
-        </Button>
-        <div className="absolute w-full flex gap-2 justify-center items-center bottom-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-        <Button className="w-fit text-lg font-bold text-gray-400">
-          <Link to={"/"}><FaHome /></Link>
-        </Button>
-        <Button onClick={handleLogout} className="w-fit text-lg font-bold text-gray-400">
-        <IoIosLogOut />
-        </Button>
-                {/* Theme Toggle */}
-                <Button
-          variant="destructive"
-          onClick={toggleTheme}
-          className="text-2xl"
-        >
-          {theme !== "dark" ? <Moon /> : <Sun />}
-        </Button>
-        </div>
 
+      <div className="w-full flex flex-col space-y-5">
+        <Link to={"profile"}>
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+            My Profile
+          </Button>
+        </Link>
+
+        <Link to={"addnewpost"}>
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+            Add New Camp
+          </Button>
+        </Link>
+
+        <Link to={"manageallcamps"}>
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+            Manage All Camps
+          </Button>
+        </Link>
+
+        <Link to={"manageregistrationcamps"}>
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+            Manage Registered Camps
+          </Button>
+        </Link>
+
+        <div className="absolute w-full flex gap-2 justify-center items-center bottom-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <Link to={"/"}>
+            <Button className="w-fit text-lg font-bold text-gray-400">
+              <FaHome />
+            </Button>
+          </Link>
+
+          <Button onClick={handleLogout} className="w-fit text-lg font-bold text-gray-400">
+            <IoIosLogOut />
+          </Button>
+
+          {/* Theme Toggle */}
+          <Button variant="destructive" onClick={toggleTheme} className="text-2xl">
+            {theme !== "dark" ? <Moon /> : <Sun />}
+          </Button>
+        </div>
       </div>
     </div>
   );

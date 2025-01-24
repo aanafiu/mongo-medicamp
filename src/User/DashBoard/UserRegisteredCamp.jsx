@@ -6,7 +6,7 @@ import { UserContext } from "@/User/Provider/AuthProvider";
 import { TiDelete } from "react-icons/ti";
 import { Button } from "@/components/ui/button";
 import { notifySuccess } from "@/User/Common/Notification";
-import Loader from "@/User/Common/Loader";
+import { IoMdDoneAll } from "react-icons/io";
 
 const UserRegisteredCamps = () => {
   const [camps, setCamps] = useState([]);
@@ -195,17 +195,20 @@ const UserRegisteredCamps = () => {
               >
                 {camp.cancelByParticipant ? (
                   <button
-                    disabled={camp.cancelByParticipant}
+                    disabled={camp.cancelByParticipant }
                     onClick={() => handleCancelRegisterParticipant(camp._id)}
                   >
                     Cancelled
                   </button>
                 ) : (
                   <button
-                    disabled={camp.cancelByParticipant}
+                    disabled={ camp.confrimationStatusByOrganizer === "confirmed" ? true : false }
                     onClick={() => handleCancelRegisterParticipant(camp._id)}
                   >
-                    <TiDelete />
+                    {
+                        camp.confrimationStatusByOrganizer === "confirmed" ? <IoMdDoneAll /> : <TiDelete />
+                    }
+                    
                   </button>
                 )}
               </td>

@@ -14,6 +14,7 @@ import SingleCampUser from "@/User/Common/SingleCampUser";
 import DashBoardUser from "@/User/DashBoard/DashBoardUser";
 import ManageMyRegistrations from "@/User/DashBoard/ManageMyRegistrations";
 import Payment from "@/User/DashBoard/Payment";
+import UserAnalysis from "@/User/DashBoard/UserAnalysis";
 import UserProfile from "@/User/DashBoard/UserProfile";
 import UserRegisteredCamp from "@/User/DashBoard/UserRegisteredCamp";
 import LoginParticipant from "@/User/Provider/LoginParticiant";
@@ -85,6 +86,14 @@ import {
                 path:"dashboard",
                 element:<PrivateRoutes allowedRoles={["Participant"]}><DashBoardUser></DashBoardUser></PrivateRoutes>,
                 children:[
+                    {
+                        path:"",
+                        element:<UserAnalysis></UserAnalysis>
+                    },
+                    {
+                        path:"analysis",
+                        element:<UserAnalysis></UserAnalysis>
+                    },
                     {
                         path:"profile",
                         element:<UserProfile></UserProfile>
