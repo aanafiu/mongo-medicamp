@@ -2,7 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+input, select{
+  background: rgba(255, 255, 255, 0.19);
+  color: #EB5A3C;
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 2px solid #E16A54;
+border-top: 0px solid transparent;
+outline: 2px;
+padding: 10px 0;
+box-sizing: border-box;
 
+}
+input:focus{
+outline:2px solid #809D3C;
+border: 2px solid transparent;
+
+}
 
 /* Menu Active */
 .active-link{
@@ -20,9 +38,9 @@
   stroke-width: 2px;
 }
 
-.input-field {
+/* .input-field {
   @apply border text-blue-400 text-lg font-semibold border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
-}
+} */
 
 .swiper {
   width: 100%;
@@ -70,7 +88,7 @@
     --muted: #809D3C;
     --muted-foreground: 240 10% 40%;
 
-    --accent: 220 80% 80%;
+    --accent: #AB4459;
     --accent-foreground: 220 80% 20%;
 
     --destructive: #E16A54;
@@ -92,7 +110,7 @@
     --muted: #809D3C;
     --muted-foreground: 240 10% 60%;
 
-    --accent: 220 80% 40%;
+    --accent: #AB4459;
     --accent-foreground: 220 80% 90%;
 
     --destructive: #E16A54;
