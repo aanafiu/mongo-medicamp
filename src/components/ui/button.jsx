@@ -10,11 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         headerD:"text-bold text-[17px] font-bold hover:text-green-500 dark:bg-transparent hover:scale-[1.06]",
-        default: "bg-blue-950 text-neutral-50 hover:bg-neutral-900/90 dark:bg-blue-950 dark:text-white dark:hover:bg-blue-500/90",
+        default: "p-2 bg-muted text-white hover:bg-primary",
         destructive:
-          "bg-green-600 px-4 py-2 text-white hover:bg-blue-950 font-bold dark:bg-blue-950 dark:hover:bg-green-600",
+          "bg-destructive px-4 py-2 text-white hover:bg-blue-950 font-bold",
         outline:
-          "border border-blue-950 bg-white hover:bg-neutral-100 hover:text-green-500 dark:border-white dark:bg-gray-950 dark:hover:bg-blue-950 dark:hover:text-white",
+          "border border-blue-950 bg-white hover:bg-neutral-100 hover:text-green-500 ",
         secondary:
           "bg-green-500 text-white hover:bg-blue-950 dark:bg-green-500 dark:text-white-50 dark:hover:bg-blue-950/80",
         ghost: "hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",

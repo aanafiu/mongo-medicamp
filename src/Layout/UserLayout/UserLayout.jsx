@@ -5,10 +5,12 @@ import { Outlet } from "react-router-dom";
 
 const UserLayout = () => {
   return (
-    <div className="container mx-auto my-5">
-      <Nav></Nav>
+    <div className=" mx-auto">
+      <div className="w-full bg-white/30 sticky top-0 z-20 backdrop-grayscale mb-10 ">
+        <Nav></Nav>
+      </div>
       <div className="h-full">
-      <Outlet></Outlet>
+        <Outlet></Outlet>
       </div>
       <FooterSection></FooterSection>
     </div>

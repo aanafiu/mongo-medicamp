@@ -44,7 +44,7 @@ const Nav = () => {
   // }
 
   return (
-    <div className="w-full flex items-center justify-between my-5">
+    <div className="container mx-auto flex items-center justify-between py-5">
       {/* Logo */}
       <div>
         <Link to="/" className="text-3xl font-extrabold">
@@ -126,12 +126,12 @@ const Nav = () => {
                 >
                   Dashboard
                 </Link>
-                <button
+                <Button
                   onClick={handleLogout}
                   className="w-full text-red-500 py-1 px-2 rounded-md"
                 >
                   Logout
-                </button>
+                </Button>
               </div>
             )}
           </div>
