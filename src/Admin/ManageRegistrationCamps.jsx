@@ -56,16 +56,16 @@ const ManageRegistrationCamps = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-6">
-            <h2 className="text-2xl font-bold text-center mb-6">Manage Registrations</h2>
+        <div className="container text-primary mx-auto px-4 py-6">
+            <h2 className="text-4xl underline font-bold text-center mb-6">Manage Registrations</h2>
 
             {registrations.length === 0 ? (
                 <p className="text-center">No registrations found.</p>
             ) : (
-                <div className="overflow-x-auto">
-                    <table className="w-full border-collapse border text-white bg-gray-950 border-gray-300">
+                <div className="overflow-visible glass rounded-none">
+                    <table className="w-full border-collapse border-2  text-primary ">
                         <thead>
-                            <tr className="uppercase text-sm">
+                            <tr className="uppercase text-sm bg-gray-950">
                                 <th className="border p-3">Transaction ID</th>
                                 <th className="border p-3">Camp Name</th>
                                 <th className="border p-3">Participant</th>
@@ -79,15 +79,15 @@ const ManageRegistrationCamps = () => {
                         </thead>
                         <tbody>
                             {registrations.map((reg) => (
-                                <tr key={reg._id} className="text-center bg-gray-700">
-                                    <td className="border p-3">{reg.transactionId}</td>
-                                    <td className="border p-3">{reg.registrationCampName}</td>
-                                    <td className="border p-3">{reg.participantName}</td>
-                                    <td className="border p-3">{reg.participantEmail}</td>
-                                    <td className="border p-3">${reg.registrationFees}</td>
-                                    <td className="border p-3">
+                                <tr key={reg._id} className="text-center glass hover:bg-card">
+                                    <td className="border-2 border-primary p-3 text-muted font-bold">{reg.transactionId}</td>
+                                    <td className="border-2 border-primary  p-3">{reg.registrationCampName}</td>
+                                    <td className="border-2 border-primary  p-3">{reg.participantName}</td>
+                                    <td className="border-2 border-primary  p-3">{reg.participantEmail}</td>
+                                    <td className="border-2 border-primary  p-3">${reg.registrationFees}</td>
+                                    <td className="border-2 border-primary  p-3">
                                         <select
-                                            className="p-2 border bg-gray-800 text-white"
+                                            className="p-2 border-2 bg-primary text-white"
                                             value={reg.campData.confrimationStatusByOrganizer}
                                             onChange={(e) => handleStatusChange(reg.registrationIdByParticipant, e.target.value)}
                                         >
@@ -95,7 +95,7 @@ const ManageRegistrationCamps = () => {
                                             <option value="confirmed">Confirmed</option>
                                         </select>
                                     </td>
-                                    <td className={`border p-3 font-semibold ${
+                                    <td className={`border-2 border-primary p-3 font-semibold ${
                                             reg.paymentStatus === "unpaid"
                                                 ? "text-red-500"
                                                 : "text-green-500"
@@ -105,7 +105,7 @@ const ManageRegistrationCamps = () => {
                                         }
                                     </td>
                                    
-                                    <td className="border p-3 text-white">{!reg?.campData?.feedback ? "N/A" : reg.campData.feedback}</td>
+                                    <td className="border-2 border-primary p-3 text-white">{!reg?.campData?.feedback ? "N/A" : reg.campData.feedback}</td>
                                 </tr>
                             ))}
                         </tbody>

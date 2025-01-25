@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 const DashBoardAdmin = () => {
   return (
-    <div className="flex flex-col md:flex-row h-svh justify-between items-center gap-5">
-      <div className="p-4 w-fit md:w-[25%]  min-h-screen bg-slate-400 flex flex-col justify-start relative">
+    <div className="flex flex-col md:flex-row justify-between items-center gap-5 overflow-hidden">
+      <div className="p-4  w-fit md:w-[25%] h-[100vh] glass flex flex-col justify-start relative">
         <SideMenu></SideMenu>
       </div>
-      <div className="p-4 w-[80%] min-h-screen bg-slate-600 overflow-scroll">
+      <div className="p-4 w-[80%] h-[100vh] flex justify-center items-start glass overflow-y-scroll">
         <Outlet></Outlet>
       </div>
     </div>

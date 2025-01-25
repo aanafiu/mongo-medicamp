@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-input, select{
+
+.glass{
+  background: rgba(255, 255, 255, 0.301);
+/* border-radius: 16px; */
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(5px);
+}
+input, select, textarea{
   background: rgba(255, 255, 255, 0.19);
   color: #EB5A3C;
 border-radius: 16px;
@@ -38,9 +46,9 @@ border: 2px solid transparent;
   stroke-width: 2px;
 }
 
-/* .input-field {
-  @apply border text-blue-400 text-lg font-semibold border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
-} */
+.input-field {
+  @apply border text-primary text-lg font-semibold border-t-0 border-primary rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-muted;
+}
 
 .swiper {
   width: 100%;
@@ -79,7 +87,7 @@ border: 2px solid transparent;
     --background: #E7D283; /* Light mode background */
     --foreground: #EB5A3C;
 
-    --card: 0 0% 100%;
+    --card: #E7D283;
     --card-foreground: 240 10% 20%;
 
     --primary: #EB5A3C;
@@ -101,7 +109,7 @@ border: 2px solid transparent;
     --background: #000000ec; /* Dark mode background */
     /* --foreground: 240 10% 90%; */
 
-    --card: 240 10% 15%;
+    --card: #E7D283;
     --card-foreground: 240 10% 90%;
 
     --primary: #EB5A3C;

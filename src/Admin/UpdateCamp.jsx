@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { notifyError, notifySuccess } from "@/User/Common/Notification";
+import { Button } from "@/components/ui/button";
 
 const UpdateCamp = () => {
   const location = useLocation();
@@ -87,8 +88,8 @@ const UpdateCamp = () => {
   if (!camp) return <p className="text-center">Loading...</p>;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 rounded-lg shadow-md">
-      <h2 className="text-3xl font-bold text-center mb-5">Update Camp</h2>
+    <div className="w-full mx-auto p-6 rounded-lg">
+      <h2 className="text-3xl font-bold text-center mb-5 underline">Update Camp</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -187,12 +188,12 @@ const UpdateCamp = () => {
 
         {/* Submit Button */}
         <div className="col-span-1 md:col-span-2 flex justify-center">
-          <button
+          <Button
             type="submit"
-            className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
+            className="px-6 py-2 rounded-md "
           >
             Update Camp
-          </button>
+          </Button>
         </div>
       </form>
     </div>

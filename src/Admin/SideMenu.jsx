@@ -29,44 +29,44 @@ const SideMenu = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="py-3 px-6 h-[70px] w-fit rounded-full text-white bg-slate-900 flex items-center justify-center mx-auto">
+    <div className="space-y-6 min-h-svh">
+      <div className="py-3 px-6 h-[70px] w-fit rounded-full text-white bg-primary flex items-center justify-center mx-auto">
         <h1 className="text-lg md:text-xl lg:text-2xl font-bold">DashBoard</h1>
       </div>
 
       <div className="w-full flex flex-col space-y-5">
         <Link to={"profile"}>
-          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold">
             My Profile
           </Button>
         </Link>
 
         <Link to={"addnewpost"}>
-          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold">
             Add New Camp
           </Button>
         </Link>
 
         <Link to={"manageallcamps"}>
-          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold">
             Manage All Camps
           </Button>
         </Link>
 
         <Link to={"manageregistrationcamps"}>
-          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold text-gray-400">
+          <Button className="w-full whitespace-normal h-fit text-base md:text-lg font-bold">
             Manage Registered Camps
           </Button>
         </Link>
 
         <div className="absolute w-full flex gap-2 justify-center items-center bottom-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Link to={"/"}>
-            <Button className="w-fit text-lg font-bold text-gray-400">
+            <Button variant="destructive" className="w-fit text-lg font-bold">
               <FaHome />
             </Button>
           </Link>
 
-          <Button onClick={handleLogout} className="w-fit text-lg font-bold text-gray-400">
+          <Button onClick={handleLogout} className="w-fit text-lg font-bold ">
             <IoIosLogOut />
           </Button>
 

@@ -4,6 +4,7 @@ import Loader from "@/User/Common/Loader";
 import { UserContext } from "@/User/Provider/AuthProvider";
 import axios from "axios";
 import { notifySuccess, notifyError } from "@/User/Common/Notification";
+import { Button } from "@/components/ui/button";
 
 const AdminProfile = () => {
     const { userParticipant } = useContext(UserContext);
@@ -71,7 +72,7 @@ const AdminProfile = () => {
     };
 
     return (
-        <div className="text-white space-y-4 p-6">
+        <div className="text-primary space-y-4 p-6">
             <div className="flex flex-col items-center">
                 <img src={userData?.photoURL} className="w-44 h-44 border rounded-full shadow-lg mb-3" alt="Admin" />
                 <h1 className="text-2xl font-bold">Role: {userData?.role}</h1>    
@@ -79,22 +80,22 @@ const AdminProfile = () => {
                 <h1 className="text-lg font-semibold">Email: {userData?.email}</h1> 
             </div>
             
-            <div className="border-t border-gray-500 pt-4">
+            <div className="border-t-2 border-primary pt-4">
                 <h2 className="text-xl font-bold mb-3">Update Profile</h2>
                 
                 <div className="space-y-3 space-x-3">
-                    <input type="text" placeholder="Update Name" className="input-field" value={name} onChange={(e) => setName(e.target.value)} />
-                    <input type="text" placeholder="Update Role" className="input-field" value={role} onChange={(e) => setRole(e.target.value)} />
-                    <input type="file" accept="image/*" onChange={handleImageUpload} className="input-field" />
-                    {image && <img src={image} alt="New Upload" className="w-24 h-24 mt-2 rounded-full" />}
+                    <input type="text" placeholder="Update Name" className="rounded-lg px-3" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input type="text" placeholder="Update Role" className="rounded-lg px-3" value={role} onChange={(e) => setRole(e.target.value)} />
+                    <input type="file" accept="image/*" onChange={handleImageUpload} className="rounded-lg px-3" />
+                    {image && <img src={image} alt="New Upload" className="w-24 h-24 px-5 rounded-full mt-2" />}
                 </div>
                 
-                <button 
+                <Button 
                     onClick={handleUpdate} 
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="mt-4 text-white text-lg font-bold px-6 py-3 rounded"
 
                 >Update
-                </button>
+                </Button>
             </div>
         </div>
     );

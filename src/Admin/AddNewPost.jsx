@@ -3,6 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const AddNewPost = () => {
     const navigate = useNavigate();
@@ -66,8 +67,8 @@ const AddNewPost = () => {
     };
 
     return (
-        <div className=" mx-auto py-3 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-5 text-center">Add A Camp</h2>
+        <div className="w-full mx-auto py-3 rounded-lg">
+            <h2 className="text-3xl font-bold mb-5 text-center underline">Add A Camp</h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-3">
 
@@ -171,9 +172,9 @@ const AddNewPost = () => {
 
                 {/* Submit Button */}
                 <div className="col-span-1 md:col-span-2 flex justify-center">
-                    <button type="submit" className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
+                    <Button type="submit" className=" text-white px-6 py-2 rounded-md ">
                         Add Camp
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>
