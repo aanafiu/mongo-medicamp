@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const Footer = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("bg-background pb-4 pt-12 text-foreground", className)}
+    className={cn("w-full pb-4 pt-12 flex justify-center items-center", className)}
     {...props} />
 ));
 Footer.displayName = "Footer";

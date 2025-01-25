@@ -12,7 +12,7 @@ const buttonVariants = cva(
         headerD:"text-bold text-[17px] font-bold hover:text-green-500 dark:bg-transparent hover:scale-[1.06]",
         default: "p-2 bg-muted text-white hover:bg-primary",
         destructive:
-          "bg-destructive px-4 py-2 text-white hover:bg-blue-950 font-bold",
+          "bg-destructive px-4 py-2 text-white hover:bg-muted font-bold",
         outline:
           "border border-blue-950 bg-white hover:bg-neutral-100 hover:text-green-500 ",
         secondary:

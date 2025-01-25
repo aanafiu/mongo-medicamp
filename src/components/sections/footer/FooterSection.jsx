@@ -10,14 +10,14 @@ import { Link } from "react-router-dom";
 
 export default function FooterSection() {
   return (
-    <footer className="w-full bg-background px-4">
-      <div className="mx-auto max-w-container">
+    <footer className="w-full px-4 mx-auto py-10">
+      <div className="gap-5">
         <Footer className="border-t pt-8">
           <FooterContent className="sm:grid-cols-2 md:grid-cols-3">
             <FooterColumn className="col-span-2 flex-row items-center justify-between gap-8 border-b pb-8 md:col-span-1 md:flex-col md:items-start md:justify-start md:border-b-0">
               <div className="flex items-center gap-2">
                 <LaunchUI />
-                <h3 className="text-xl font-bold">Launch UI</h3>
+                <h3 className="text-3xl font-bold">MediCamp</h3>
               </div>
               <div className="ml-2.5 flex gap-4 sm:ml-0">
                 <Link
@@ -89,10 +89,11 @@ export default function FooterSection() {
               </a>
             </FooterColumn>
           </FooterContent>
-          <FooterBottom className="border-0">
-            <div>© 2024 aanafiu. All rights reserved</div>
-          </FooterBottom>
+       
         </Footer>
+        <FooterBottom className="border-0">
+            <div className="text-center mx-auto w-fit text-base">© 2024 <Link to={'https://github.com/aanafiu'} target="_" className="text-primary text-xl">aanafiu.</Link> All rights reserved</div>
+        </FooterBottom>
       </div>
     </footer>
   );
