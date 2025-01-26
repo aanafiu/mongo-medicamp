@@ -9,6 +9,7 @@ import UserAuthLayout from "@/Layout/UserLayout/UserAuthLayout";
 import UserLayout from "@/Layout/UserLayout/UserLayout";
 import PrivateRoutes from "@/Router/PrivateRoutes";
 import AllCampsDetails from "@/User/Common/AllCampsDetails";
+import Error from "@/User/Common/Error";
 import Home from "@/User/Common/Home";
 import SingleCampUser from "@/User/Common/SingleCampUser";
 import DashBoardUser from "@/User/DashBoard/DashBoardUser";
@@ -29,6 +30,7 @@ import {
     {
       path: "/",
       element: <UserLayout></UserLayout>,
+      errorElement:<Error></Error>,
       children:[
         {
             path:"/",
@@ -51,6 +53,7 @@ import {
             {
                 path:"",
                 element:<PrivateRoutes allowedRoles={["Participant"]}><DashBoardUser></DashBoardUser></PrivateRoutes>,
+                errorElement:<Error></Error>,
                 children:[
                     {
                         path:"profile",
@@ -85,6 +88,7 @@ import {
             {
                 path:"dashboard",
                 element:<PrivateRoutes allowedRoles={["Participant"]}><DashBoardUser></DashBoardUser></PrivateRoutes>,
+                errorElement:<Error></Error>,
                 children:[
                     {
                         path:"",
@@ -118,6 +122,7 @@ import {
     {
         path: "/admin/",
         element: <PrivateRoutes allowedRoles={["Organizer"]}><DashBoardAdmin/></PrivateRoutes>,
+        errorElement:<Error></Error>,
         children:[
           {
               path:"",

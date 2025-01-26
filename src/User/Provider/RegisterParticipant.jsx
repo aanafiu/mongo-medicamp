@@ -39,6 +39,14 @@ const RegisterParticipant = () => {
       })
       .then((res) => {
         // console.log(res)
+        axios.post("https://backend-medicamp-a12.vercel.app/jwt", {
+          email
+        }).then(resToken=>{
+
+          // console.log("res",resToken.data.token)
+          localStorage.setItem("token", resToken.data.token);
+        })
+
         if (res.status == 201) {
           notifySuccess(`${fullName} Registered as ${role}`).then((result) => {
             if (result.isConfirmed) {
@@ -76,9 +84,11 @@ const RegisterParticipant = () => {
 
     registerNewAccount(email, password)
       .then((res) => {
-        console.log(res);
+        
+        // console.log(res);
         // Account Opened But Name & Photo Not Updated In Firebase
         updateDetails(fullName, photoURL).then(() => {
+
           sendDataToAxios(fullName, email, photoURL, role);
         });
       })
@@ -259,7 +269,7 @@ const RegisterParticipant = () => {
           </form>
 
           {/* Login Link */}
-          <p className="mt-4 text-center text-sm text-gray-600">
+          <p className="mt-4 text-center text-sm text-white">
             Already have an account?{" "}
             <a href="/user/login" className="text-muted hover:underline">
               Login here

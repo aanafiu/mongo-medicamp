@@ -3,9 +3,11 @@ import { notifyError } from "@/User/Common/Notification";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { use } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ManageRegistrationCamps = () => {
     const [registrations, setRegistrations] = useState([]);
+    const navigate = useNavigate()
 
     // Fetch registration data
  const fetchAllData = ()=>{
@@ -47,11 +49,17 @@ const ManageRegistrationCamps = () => {
                 
                 setLoading(false);
                 fetchAllData();
-            }else{
-                notifyError("User Canceled")
             }
         })
-        .catch(() => notifyError("User Canceled"));
+        .catch(() => {
+            notifyError("User Canceled").then((res)=>{
+            if(res.isConfirmed)
+            {
+                navigate("/admin")
+                
+            }
+            // fetchAllData();
+        })})
     };
 
     if(loading)
@@ -109,7 +117,7 @@ const ManageRegistrationCamps = () => {
                                         }
                                     </td>
                                    
-                                    <td className="border-2 border-primary p-3 text-white">{!reg?.campData?.feedback ? "N/A" : reg.campData.feedback}</td>
+                                    <td className="border-2 border-primary p-3 text-primary">{!reg?.campData?.feedback ? "N/A" : reg.campData.feedback}</td>
                                 </tr>
                             ))}
                         </tbody>

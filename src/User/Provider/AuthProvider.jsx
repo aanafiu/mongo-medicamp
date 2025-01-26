@@ -35,18 +35,17 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-//   Google Login or Signup User
+  //   Google Login or Signup User
   const provider = new GoogleAuthProvider();
   const loginWithGoogle = () => {
     // console.log("i am here");
-    
+
     return signInWithPopup(auth, provider);
   };
 
-//   Login With email and password
-  // Login
+  //   Login With email and password
   const loginUser = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   //   Update Information
@@ -54,16 +53,15 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
-    })
+    });
   };
 
-//  logOut
+  //  logOut
   // Sign Out
   const logOutUser = () => {
-
+    localStorage.removeItem("token");
     return signOut(auth);
   };
-
 
   // Pass Information
   const userInfo = {
@@ -72,7 +70,7 @@ const AuthProvider = ({ children }) => {
     registerNewAccount,
     loginWithGoogle,
     loginUser,
-    logOutUser
+    logOutUser,
   };
 
   if (loading) {

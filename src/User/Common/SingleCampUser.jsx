@@ -144,7 +144,7 @@ const SingleCampUser = () => {
         {/* Join Camp Button */}
         {userData?.role === "Organizer" ? (
           <div>
-              <Link to={`/admin/allposts/${id}`} className=" bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">Manage Camp</Link>
+              <Link to={`/admin/allposts/${id}`} className=" bg-muted text-white px-6 py-3 rounded-md hover:bg-primary transition">Manage Camp</Link>
           </div>
         ) : (
           <Button

@@ -19,6 +19,7 @@ import {
   notifyWarning,
 } from "@/User/Common/Notification";
 import Loader from "@/User/Common/Loader";
+import axios from "axios";
 
 const LoginParticipant = () => {
   // Nagigate link
@@ -57,12 +58,20 @@ const LoginParticipant = () => {
     handleSubmit(onSubmit)();
   };
 
-  const onSubmit = (data) => {
-    console.log("Login Data:", data);
+  const onSubmit =(data) => {
+    // console.log("Login Data:", data);
     const { email, password } = data;
-    console.log(email, password);
+    // console.log(email, password);
     loginUser(email, password)
       .then(() => {
+        axios.post("https://backend-medicamp-a12.vercel.app/jwt", {
+          email
+        }).then(resToken=>{
+
+          // console.log("res",resToken.data.token)
+          localStorage.setItem("token", resToken.data.token);
+        })
+  
         notifyLogin(`Welcome, ${userParticipant.displayName}`).finally(() => {
           navigate("/");
         });
@@ -84,7 +93,19 @@ const LoginParticipant = () => {
     loginWithGoogle().then((res) => {
       // console.log(res);
       const { displayName, photoURL, email } = res.user;
-      console.log(displayName, photoURL, email);
+      
+      const token = localStorage.getItem("token");
+      axios.post("https://backend-medicamp-a12.vercel.app/jwt", {
+        email
+      },{headers: {
+        Authorization: `Bearer ${token}`,
+      },}).then(resToken=>{
+
+        // console.log("res",resToken.data.token)
+        localStorage.setItem("token", resToken.data.token);
+      })
+
+      // console.log(displayName, photoURL, email);
       notifyLogin(`Welcome, ${displayName}`).then(() => {
         updateDetails(displayName,photoURL)
         navigate("/");
@@ -158,7 +179,7 @@ const LoginParticipant = () => {
           </form>
 
           {/* Register Link */}
-          <p className="mt-4 text-center text-sm text-gray-600">
+          <p className="mt-4 text-center text-sm text-white">
             Don't have an account?{" "}
             <a href="/user/register" className="text-muted hover:underline">
               Register here

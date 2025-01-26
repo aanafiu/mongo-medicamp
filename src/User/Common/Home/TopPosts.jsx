@@ -4,6 +4,7 @@ import { FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import toppost from "../../../assets/top-post.json";
 import Lottie from "lottie-react";
+import { Button } from "@/components/ui/button";
 
 const TopPosts = () => {
   const [topPosts, setTopPosts] = useState([]);
@@ -25,7 +26,7 @@ const TopPosts = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <div className=" flex justify-between items-center">
-      <div className="h-24 w-24">
+        <div className="h-24 w-24">
           <Lottie animationData={toppost}></Lottie>
         </div>
         <h2 className="text-3xl underline font-bold text-center text-primary mb-8">
@@ -77,6 +78,11 @@ const TopPosts = () => {
           ))}
         </div>
       )}
+      <div className="w-full flex justify-center items-center my-5">
+        <Link to={"/allcamps"} className="mx-auto w-fit">
+          <Button variant="destructive">More Camps</Button>
+        </Link>
+      </div>
     </div>
   );
 };
