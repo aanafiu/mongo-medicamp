@@ -19,7 +19,7 @@ import Lottie from 'lottie-react';
 
 const Banner = () => {
     return (
-        <div className="relative py-14 max-h-screen flex items-center justify-between gap-5">
+        <div className="relative py-14 max-h-screen flex flex-col md:flex-row items-center justify-between gap-5">
             {/* Lottie Animation Background */}
             <Lottie
                 loop 
@@ -29,12 +29,12 @@ const Banner = () => {
             />
 
             {/* Content Section */}
-            <div className="relative z-10 w-full space-y-5 flex flex-col px-6">
-                <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-extrabold text-primary">
+            <div className="relative z-10 w-full space-y-5 flex flex-col justify-center px-6">
+                <h1 className="text-xl mx-auto sm:text-2xl md:text-4xl lg:text-6xl font-extrabold text-primary">
                     Your Health, Our Mission – Join MediCamp Today!
                 </h1>
                 <Link to="/user/login" className="w-fit flex items-center justify-center">
-                    <Button className="text-xl w-full">Join Now</Button>
+                    <Button className="text-base md:text-xl w-full">Join Now</Button>
                 </Link>
             </div>
 

@@ -23,15 +23,15 @@ export function ThemeProvider({
     // Remove the existing theme classes if any
     root.classList.remove("light", "dark");
 
-    if (theme === "system") {
-      // Apply the system theme (dark or light mode) based on the system preference
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
+    // if (theme === "system") {
+    //   // Apply the system theme (dark or light mode) based on the system preference
+    //   const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+    //     ? "dark"
+    //     : "light";
 
-      root.classList.add(systemTheme);
-      return;
-    }
+    //   root.classList.add(systemTheme);
+    //   return;
+    // }
 
     // Apply the selected theme (light or dark)
     root.classList.add(theme);
