@@ -9,7 +9,7 @@ const AllCamps = () => {
   useEffect(() => {
     const fetchCamps = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/allposts"); // Replace with your API URL
+        const response = await axios.get("https://backend-medicamp-a12.vercel.app/allposts"); // Replace with your API URL
         setCamps(response.data);
       } catch (err) {
         setError(err.message);

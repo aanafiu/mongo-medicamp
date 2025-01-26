@@ -54,7 +54,7 @@ const AddNewPost = () => {
         }
 
         console.log(data);
-        axios.post("http://localhost:5000/allpost", data)
+        axios.post("https://backend-medicamp-a12.vercel.app/allpost", data)
             .then(res => {
                 if (res.status === 201) {
                     notifySuccess("Post Added Successfully").then((result) => {

@@ -52,7 +52,7 @@ const AdminProfile = () => {
         };
 
 
-            await axios.put(`http://localhost:5000/update-user-role?email=${email}`, updatedData)
+            await axios.put(`https://backend-medicamp-a12.vercel.app/update-user-role?email=${email}`, updatedData)
             .then(res =>{
                 if (res.status === 200) {
                     notifySuccess("Profile Updated Successfully");

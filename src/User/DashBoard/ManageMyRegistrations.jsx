@@ -8,7 +8,7 @@ const ManageMyRegistrations = () => {
 
     useEffect(() => {
         if (userParticipant?.email) {
-            axios.get(`http://localhost:5000/sucessfully-payment?email=${userParticipant.email}`)
+            axios.get(`https://backend-medicamp-a12.vercel.app/sucessfully-payment?email=${userParticipant.email}`)
                 .then(res => {
                     setCamps(res.data.data);
                 })
@@ -20,7 +20,7 @@ const ManageMyRegistrations = () => {
 
     return (
         <div className="container mx-auto px-4 py-6">
-            <h2 className="text-2xl font-bold text-center mb-6">My Registered Camps</h2>
+            <h2 className="text-3xl underline font-bold text-center mb-6">My Registered Camps</h2>
 
             {camps.length === 0 ? (
                 <p className="text-center">No registrations found.</p>
@@ -38,13 +38,13 @@ const ManageMyRegistrations = () => {
                         </thead>
                         <tbody>
                             {camps.map((camp, index) => (
-                                <tr key={index} className="text-center bg-gray-700">
+                                <tr key={index} className="text-center bg-muted">
                                     <td className="border p-3">{camp.registrationCampName}</td>
                                     <td className="border p-3">${camp.registrationFees}</td>
                                     <td className="border p-3">{camp.campData?.location || "N/A"}</td>
                                     <td className="border p-3">{camp.transactionId || "N/A"}</td> {/* Transaction ID */}
                                     <td
-                                        className={`border p-3 font-semibold ${
+                                        className={`border p-3 text-lg bg-gray-900 font-semibold ${
                                             camp.paymentStatus === "unpaid"
                                                 ? "text-red-500"
                                                 : "text-green-500"

@@ -99,10 +99,10 @@ const LoginParticipant = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <Card className="w-full max-w-sm p-6 shadow-lg">
+      <Card className="w-full glass max-w-xl p-6 shadow-lg">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
-          <CardDescription>Access your account</CardDescription>
+          <CardTitle className="text-4xl mx-auto">Login</CardTitle>
+          <CardDescription className="text-base mx-auto">Access your account</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
@@ -113,6 +113,7 @@ const LoginParticipant = () => {
                 id="email"
                 type="email"
                 placeholder="Enter your email"
+                
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -159,7 +160,7 @@ const LoginParticipant = () => {
           {/* Register Link */}
           <p className="mt-4 text-center text-sm text-gray-600">
             Don't have an account?{" "}
-            <a href="/user/register" className="text-blue-500 hover:underline">
+            <a href="/user/register" className="text-muted hover:underline">
               Register here
             </a>
           </p>
@@ -168,7 +169,7 @@ const LoginParticipant = () => {
           {/* Google Sign-In Button */}
           <Button
             type="button"
-            variant="outline"
+            variant="destructive"
             onClick={handleGoogleSignIn}
             className="w-full flex items-center justify-center gap-2"
           >

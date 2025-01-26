@@ -1,4 +1,5 @@
 import Loader from "@/User/Common/Loader";
+import { notifyError } from "@/User/Common/Notification";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { use } from "react";
@@ -9,7 +10,7 @@ const ManageRegistrationCamps = () => {
     // Fetch registration data
  const fetchAllData = ()=>{
  
-        axios.get("http://localhost:5000/sucessfully-payment-admin")
+        axios.get("https://backend-medicamp-a12.vercel.app/sucessfully-payment-admin")
             .then((res) => {
                 if (res.data.success) {
                     // Filter only paid registrations
@@ -31,7 +32,7 @@ const ManageRegistrationCamps = () => {
         
         // console.log(id)
         setLoading(true);
-        axios.put(`http://localhost:5000/update-confirmation/${id}`, {
+        axios.put(`https://backend-medicamp-a12.vercel.app/update-confirmation/${id}`, {
             confrimationStatusByOrganizer: newStatus
         })
         .then((res) => {
@@ -43,11 +44,14 @@ const ManageRegistrationCamps = () => {
                         reg._id === id ? { ...reg, campData: { ...reg.campData, confrimationStatusByOrganizer: newStatus } } : reg
                     )
                 );
+                
                 setLoading(false);
                 fetchAllData();
+            }else{
+                notifyError("User Canceled")
             }
         })
-        .catch((error) => console.error("Error updating status:", error));
+        .catch(() => notifyError("User Canceled"));
     };
 
     if(loading)

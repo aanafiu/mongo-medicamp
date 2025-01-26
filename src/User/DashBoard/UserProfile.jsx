@@ -48,7 +48,7 @@ const UserProfile = () => {
             photoURL: image || userData?.photoURL
         };
 
-        await axios.put(`http://localhost:5000/update-user-role?email=${email}`, updatedData)
+        await axios.put(`https://backend-medicamp-a12.vercel.app/update-user-role?email=${email}`, updatedData)
             .then(res => {
                 if (res.status === 200) {
                     notifySuccess("Profile Updated Successfully");
@@ -60,7 +60,7 @@ const UserProfile = () => {
     };
 
     return (
-        <div className="text-white space-y-4 p-6">
+        <div className="text-primary space-y-4 p-6">
             <div className="flex flex-col items-center">
                 <img src={userData?.photoURL} className="w-44 h-44 border rounded-full shadow-lg mb-3" alt="User" />
                 <h1 className="text-2xl font-bold">Role: {userData?.role}</h1>    
@@ -68,10 +68,10 @@ const UserProfile = () => {
                 <h1 className="text-lg font-semibold">Email: {userData?.email}</h1> 
             </div>
             
-            <div className="border-t border-gray-500 pt-4">
-                <h2 className="text-xl font-bold mb-3">Update Profile</h2>
+            <div className="border-t border-muted w-full pt-4 mx-auto">
+                <h2 className="text-2xl font-bold mb-3">Update Profile</h2>
                 
-                <div className="space-y-3 space-x-3">
+                <div className="space-y-3 space-x-3 h-fit">
                     <input type="text" placeholder="Update Name" className="input-field" value={name} onChange={(e) => setName(e.target.value)} />
                     <input type="text" placeholder="Update Role" className="input-field" value={role} onChange={(e) => setRole(e.target.value)} />
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="input-field" />
@@ -80,7 +80,7 @@ const UserProfile = () => {
                 
                 <Button 
                     onClick={handleUpdate} 
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="mt-4  text-white px-4 py-2 rounded"
                 >
                     Update
                 </Button>

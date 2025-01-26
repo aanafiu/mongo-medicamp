@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const UserLayout = () => {
   return (
     <div className="mx-auto">
-      <div className="w-full bg-white/30 sticky top-0 z-20 backdrop-grayscale mb-10 ">
+      <div className="w-full bg-white/30 sticky top-0 z-20 backdrop-grayscale py-3 mb-10 ">
         <Nav></Nav>
       </div>
       <div className="min-h-full container mx-auto">

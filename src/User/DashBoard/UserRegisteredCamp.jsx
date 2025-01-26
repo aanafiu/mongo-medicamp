@@ -20,7 +20,7 @@ const UserRegisteredCamps = () => {
   const fetchRegisteredCamps = () => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/register-camp-by-user?email=${userParticipant?.email}`)
+      .get(`https://backend-medicamp-a12.vercel.app/register-camp-by-user?email=${userParticipant?.email}`)
       .then((res) => {
         setCamps(res.data.data);
         setLoading(false);
@@ -59,7 +59,7 @@ const UserRegisteredCamps = () => {
       if (result.isConfirmed) {
         try {
           const response = await axios.put(
-            `http://localhost:5000/cancel-registration/${id}`
+            `https://backend-medicamp-a12.vercel.app/cancel-registration/${id}`
           );
 
           if (response.data.success) {
@@ -95,7 +95,7 @@ const UserRegisteredCamps = () => {
       const feedback = text;
       console.log(text);
       axios
-        .put(`http://localhost:5000/update-feedback/${id}`, { feedback })
+        .put(`https://backend-medicamp-a12.vercel.app/update-feedback/${id}`, { feedback })
         .then((response) => {
             setLoading(true)
           if (response.data.success) {
@@ -135,7 +135,7 @@ const UserRegisteredCamps = () => {
         />
       </div>
 
-      <table className="min-w-full bg-gray-900 border border-collapse text-center border-gray-300">
+      <table className="min-w-full bg-gray-900 border border-collapse text-center border-gray-800">
         <thead>
           <tr className="bg-gray-800 ">
             <th className="py-2 px-4 border">Camp Name</th>
@@ -149,7 +149,7 @@ const UserRegisteredCamps = () => {
         </thead>
         <tbody>
           {filteredCamps.map((camp,index) => (
-            <tr key={camp.cancelByParticipant ? index : camp.campId} className="border">
+            <tr key={camp.cancelByParticipant ? index : camp.campId} className="border font-semibold border-primary bg-gray-700 hover:bg-black">
               <td className="py-2 px-4">{camp.campName}</td>
               <td className="py-2 px-4">${camp.fees}</td>
               <td className="py-2 px-4">{camp.participantName}</td>

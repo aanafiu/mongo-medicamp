@@ -23,7 +23,7 @@ const UpdateCamp = () => {
   // Fetch existing camp details
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allposts/${id}`)
+      .get(`https://backend-medicamp-a12.vercel.app/allposts/${id}`)
       .then((res) => {
         setCamp(res.data);
         setImageUrl(res.data.image); // Set initial image
@@ -66,7 +66,7 @@ const UpdateCamp = () => {
     updatedData.image = imageUrl || camp.image; // Use uploaded or existing image
 
     axios
-      .put(`http://localhost:5000/update-camp/${id}`, updatedData)
+      .put(`https://backend-medicamp-a12.vercel.app/update-camp/${id}`, updatedData)
       .then((res) => {
         if (res.status === 200) {
           notifySuccess("Post Updated Successfully").then((res) => {

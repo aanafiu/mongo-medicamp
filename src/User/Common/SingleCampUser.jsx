@@ -26,21 +26,21 @@ const SingleCampUser = () => {
     const { value: formValues } = await Swal.fire({
       title: "Join Camp",
       html: `
-            <div class="text-blue-400">
+            <div class="">
             
-                <p><strong>Camp Name:</strong> ${post?.campName}</p>
+                <p class="text-white text-2xl"><strong>Camp Name:</strong> ${post?.campName}</p>
                 <p><strong>Fees:</strong> $${post?.fees}</p>
                 <p><strong>Location:</strong> ${post?.location}</p>
                 <p><strong>Healthcare Professional:</strong> ${post?.healthcareName}</p>
-                <select required id="gender" class="swal2-input">
+                <select required id="gender" class="swal2-input mt-5">
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                 </select>
-                <input required id="age" class="swal2-input" type="number" placeholder="Enter Your Age">
-                <input required id="phone" class="swal2-input" type="text" placeholder="Phone Number">
-                <input required id="emergencyContact" class="swal2-input" type="text" placeholder="Emergency Contact">
+                <input required id="age" class="swal2-input input-field" type="number" placeholder="Enter Your Age">
+                <input required id="phone" class="swal2-input input-field" type="text" placeholder="Phone Number">
+                <input required id="emergencyContact" class="swal2-input input-field" type="text" placeholder="Emergency Contact">
             </div>
                 
             `,
@@ -86,7 +86,7 @@ const SingleCampUser = () => {
 
       axios
         .post(
-          "http://localhost:5000/register-camp-by-user",
+          "https://backend-medicamp-a12.vercel.app/register-camp-by-user",
           formValues
         )
         .then((res) => {
@@ -95,7 +95,7 @@ const SingleCampUser = () => {
               if (res.isConfirmed) {
                 axios
                   .put(
-                    `http://localhost:5000/participantCount/${id}`
+                    `https://backend-medicamp-a12.vercel.app/participantCount/${id}`
                   )
                   .then((res) => {
                     if (res.status === 200) {
@@ -111,7 +111,7 @@ const SingleCampUser = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className=" shadow-lg rounded-lg p-6 container h-fit space-y-7 mx-auto">
+      <div className="glass rounded-lg p-6 container h-fit space-y-7 mx-auto">
         {/* Camp Image */}
         <img
           src={post?.image}
@@ -121,7 +121,7 @@ const SingleCampUser = () => {
 
         {/* Camp Details */}
         <h1 className="text-3xl font-bold mt-4">{post?.campName}</h1>
-        <p className="text-gray-600 mt-2">{post?.description}</p>
+        <p className="text-gray-900 mt-2">{post?.description}</p>
 
         <div className="mt-4">
           <p>
@@ -147,12 +147,12 @@ const SingleCampUser = () => {
               <Link to={`/admin/allposts/${id}`} className=" bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">Manage Camp</Link>
           </div>
         ) : (
-          <button
+          <Button
             onClick={handleJoinCamp}
-            className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
+            className="mt-6  text-white px-6 py-3 rounded-md  transition"
           >
             Join Camp
-          </button>
+          </Button>
         )}
       </div>
     </div>

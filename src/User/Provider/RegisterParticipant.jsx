@@ -31,7 +31,7 @@ const RegisterParticipant = () => {
   //   Send Data To Axios
   const sendDataToAxios = (fullName, email, photoURL, role) => {
     axios
-      .post("http://localhost:5000/userinformations", {
+      .post("https://backend-medicamp-a12.vercel.app/userinformations", {
         name: fullName,
         email: email,
         photoURL: photoURL,
@@ -123,11 +123,11 @@ const RegisterParticipant = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <Card className="w-full max-w-md p-6 shadow-lg">
+    <div className="flex items-center justify-center min-h-screen ">
+      <Card className="w-full max-w-lg p-6 glass">
         <CardHeader>
-          <CardTitle>Register</CardTitle>
-          <CardDescription>Create your account</CardDescription>
+          <CardTitle className="text-3xl mx-auto">Register</CardTitle>
+          <CardDescription className="text-base mx-auto">Create your account</CardDescription>
         </CardHeader>
         <CardContent>
           {/* <form onSubmit={handleSubmit(onSubmit)} className="space-y-4"> */}
@@ -250,7 +250,7 @@ const RegisterParticipant = () => {
             {/* Google Sign-In Button */}
             <Button
               type="button"
-              variant="outline"
+              variant="destructive"
               onClick={handleGoogleSignIn}
               className="w-full flex items-center justify-center gap-2"
             >
@@ -261,7 +261,7 @@ const RegisterParticipant = () => {
           {/* Login Link */}
           <p className="mt-4 text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <a href="/user/login" className="text-blue-500 hover:underline">
+            <a href="/user/login" className="text-muted hover:underline">
               Login here
             </a>
           </p>

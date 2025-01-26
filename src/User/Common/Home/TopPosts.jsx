@@ -11,7 +11,7 @@ const TopPosts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/top-posts")
+      .get("https://backend-medicamp-a12.vercel.app/top-posts")
       .then((res) => {
         setTopPosts(res.data);
         setLoading(false);

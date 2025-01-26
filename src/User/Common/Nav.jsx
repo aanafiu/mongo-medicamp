@@ -18,9 +18,9 @@ const Nav = () => {
   // User Auth
   const { userParticipant, logOutUser } = useContext(UserContext);
   // Custom Hook
-  const {userData} = CurrentUserData(userParticipant?.email);
+  const { userData } = CurrentUserData(userParticipant?.email);
 
-  console.log("sss",userData)
+  console.log("sss", userData);
   const [menuVisible, setMenuVisible] = useState(false);
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   const toggleDropMenu = () => {
@@ -44,7 +44,7 @@ const Nav = () => {
   // }
 
   return (
-    <div className="container mx-auto flex items-center justify-between py-5">
+    <div className="container px-2 mx-auto flex items-center justify-between py-5">
       {/* Logo */}
       <div>
         <Link to="/" className="text-3xl font-extrabold">
@@ -70,14 +70,16 @@ const Nav = () => {
         >
           Available Camps
         </NavLink>
-        <NavLink
-          to={userData?.role === "Participant" ? "/user/dashboard" : "/admin"}
-          className={({ isActive }) =>
-            ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
-          }
-        >
-          Dashboard
-        </NavLink>
+        {userParticipant && (
+          <NavLink
+            to={userData?.role === "Participant" ? "/user/dashboard" : "/admin"}
+            className={({ isActive }) =>
+              ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
+            }
+          >
+            Dashboard
+          </NavLink>
+        )}
       </div>
 
       {/* Mobile Menu Toggle */}
@@ -118,10 +120,16 @@ const Nav = () => {
             {/* Custom Menu */}
             {menuVisible && (
               <div className="absolute z-30 top-[100%] right-0 mt-2 w-48 shadow-md bg-black/70 dark:shadow-white rounded-md p-2 space-y-4">
-                <div className="font-semibold">{userParticipant.displayName}</div>
+                <div className="font-semibold">
+                  {userParticipant.displayName}
+                </div>
                 <hr className="my-2" />
                 <Link
-                  to={userData?.role === "Participant" ? "/user/dashboard" : "/admin"}
+                  to={
+                    userData?.role === "Participant"
+                      ? "/user/dashboard"
+                      : "/admin"
+                  }
                   className="block py-1 px-2 rounded-md dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   Dashboard
@@ -160,30 +168,42 @@ const Nav = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
+                ` text-lg font-bold ${
+                  isActive ? "active-link" : "inactive-link"
+                }`
               }
               onClick={toggleMobileMenu}
             >
               Home
             </NavLink>
             <NavLink
-              to="/test"
+              to="/allcamps"
               className={({ isActive }) =>
-                ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
+                ` text-lg font-bold ${
+                  isActive ? "active-link" : "inactive-link"
+                }`
               }
               onClick={toggleMobileMenu}
             >
               Available Camps
             </NavLink>
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) =>
-                ` text-lg font-bold ${isActive ? "active-link" : "inactive-link"}`
-              }
-              onClick={toggleMobileMenu}
-            >
-              Dashboard
-            </NavLink>
+            {userParticipant && (
+              <NavLink
+                to={
+                  userData?.role === "Participant"
+                    ? "/user/dashboard"
+                    : "/admin"
+                }
+                className={({ isActive }) =>
+                  ` text-lg font-bold ${
+                    isActive ? "active-link" : "inactive-link"
+                  }`
+                }
+                onClick={toggleMobileMenu}
+              >
+                Dashboard
+              </NavLink>
+            )}
 
             {!userParticipant ? (
               <Link
@@ -194,15 +214,17 @@ const Nav = () => {
                 Join Us
               </Link>
             ) : (
-              <>
-                <div className="font-semibold">{userParticipant.displayName}</div>
+              <div className="bg-muted w-full rounded-3xl text-center">
+                <div className="font-semibold text-xl border-b-2 py-3">
+                  {userParticipant.displayName}
+                </div>
                 <button
                   onClick={handleLogout}
-                  className="text-red-500 font-bold"
+                  className="text-red-500 font-bold py-3"
                 >
                   Logout
                 </button>
-              </>
+              </div>
             )}
 
             {/* Theme Toggle */}

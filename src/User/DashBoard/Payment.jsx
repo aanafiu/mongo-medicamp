@@ -53,13 +53,13 @@ const CheckoutForm = ({ camp }) => {
         `Successfully Paid ${amount}$ For ${campDetails.campName}`
       ).then((res) => {
         axios
-          .put(`http://localhost:5000/register-camp-by-user/${campDetails._id}`)
+          .put(`https://backend-medicamp-a12.vercel.app/register-camp-by-user/${campDetails._id}`)
           .then((res) => {
             if (res.status === 201) {
               //   console.log("sssssssss",res);
               axios
                 .get(
-                  `http://localhost:5000/register-camp-by-user/${campDetails._id}`
+                  `https://backend-medicamp-a12.vercel.app/register-camp-by-user/${campDetails._id}`
                 )
                 .then((res) => {
                   console.log("resss", res.data.data);
@@ -80,7 +80,7 @@ const CheckoutForm = ({ camp }) => {
                   };
 
                   axios.post(
-                    "http://localhost:5000/sucessfully-payment",
+                    "https://backend-medicamp-a12.vercel.app/sucessfully-payment",
                     userInfo
                   )
                 });
@@ -126,7 +126,7 @@ const Payment = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/create-payment-intent", {
+      .post("https://backend-medicamp-a12.vercel.app/create-payment-intent", {
         amount: camp?.fees,
         currency: "usd",
       })
